@@ -1,0 +1,12 @@
+.header__group {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding-top: 45px;
+    padding-bottom: 41px;
+    margin-bottom: 40px;
+
+    max-width: 880px;
+    
+    border-bottom: 1px solid #545454;
+}
