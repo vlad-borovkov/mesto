@@ -1,4 +1,8 @@
 .profile__add-button {
-    margin: 0;
-    margin-left: 251px;
+    margin-left: auto;
+}
+
+.profile__add-button:hover {
+    opacity: 0.6;
+    cursor: url(/images/Cursor_1.png), pointer;
 }
