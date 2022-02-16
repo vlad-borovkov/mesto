@@ -1,8 +1,34 @@
 .profile__add-button {
+    display: block;
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    text-align: center;
+    line-height: 38px;
+    color: #FFFFFF;
+    width: 150px;
+    height: 50px;
+    border: 2px solid white;
+    box-sizing: border-box;
     margin-left: auto;
+    border-radius: 2px;
+
 }
 
 .profile__add-button:hover {
     opacity: 0.6;
     cursor: url(/images/Cursor_1.png), pointer;
+}
+
+@media screen and (max-width: 580px) and (min-width: 320px)   {
+
+    .profile__add-button {
+        margin: 0;
+        width: 282px;
+        height: 50px;
+       
+    }
+   
 }

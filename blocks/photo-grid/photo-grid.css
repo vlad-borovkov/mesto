@@ -4,8 +4,17 @@
     margin-top: 50px;
     padding-bottom: 66px;
     display: grid;
-    grid-template-columns: repeat(3, fit-content(282px));
+    grid-template-columns: repeat(auto-fit, 282px);
     grid-template-rows: repeat(2, 361px);
     grid-column-gap: 17px;
     grid-row-gap: 20px;
+    justify-content: center;
+}
+
+@media screen and (max-width: 580px) and (min-width: 320px)   {
+
+    .photo-grid {
+    padding-bottom: 48px;
+    margin-top: 36px;
+    }   
 }

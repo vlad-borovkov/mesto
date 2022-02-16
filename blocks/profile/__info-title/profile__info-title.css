@@ -5,3 +5,14 @@
     max-width: 336px;
 
 }
+
+@media screen and (max-width: 580px) and (min-width: 320px)   {
+
+    .profile__info-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        max-width: 100%;
+    }   
+}

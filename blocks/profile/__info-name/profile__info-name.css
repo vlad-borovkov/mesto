@@ -9,3 +9,14 @@
     margin-bottom: 16px;
 
 }
+
+@media screen and (max-width: 580px) and (min-width: 320px)   {
+
+    .profile__info-name {
+        font-weight: 500;
+        font-size: 27px;
+        line-height: 33px;
+        margin-bottom: 0px;
+    }   
+}
+

@@ -6,3 +6,16 @@
     max-width: 880px;
     
 }
+
+@media screen and (max-width: 580px) and (min-width: 320px)   {
+
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 880px;
+    }
+    
+}
