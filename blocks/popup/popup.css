@@ -1,5 +1,5 @@
 .popup {
-    display: block; /*none*/
+    display: flex; /*none*/
     position: fixed;
     top: 0;
     right: 0;
@@ -9,5 +9,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 0;
+    flex-direction: column;
+    justify-content: center;
 }
 
