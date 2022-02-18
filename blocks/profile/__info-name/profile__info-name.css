@@ -7,11 +7,10 @@
     color: #FFFFFF;
     margin: 0;
     margin-bottom: 16px;
-    text-overflow: ellipsis;   
-    white-space: nowrap;   
+    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden;
     max-width: 294px;
-
 }
 
 @media screen and (max-width: 660px) and (min-width: 320px)   {
