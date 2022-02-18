@@ -2,7 +2,6 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -11,7 +10,7 @@
     width: 430px;
     height: 330px;
     border-radius: 10px;
-    background-color: white; 
+    background-color: white;
     font-family: Inter, Arial, sans-serif;
 }
 
