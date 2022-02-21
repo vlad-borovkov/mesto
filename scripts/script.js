@@ -1,38 +1,31 @@
 let popupOpenButton = document.querySelector('.profile__info-edit-button');
 let popupCloseButton = document.querySelector('.popup__close-icone');
-let popupOn = document.querySelector('.popup');
+let popup = document.querySelector('.popup');
+
+let nameOutput = document.getElementById('name');
+let descriptionOutput = document.getElementById('description');
+
+let nameInput = document.querySelector('.popup__name');
+let descriptionInput = document.querySelector('.popup__description'); 
 
 let turnOnPopupVisability = function() {
-    popupOn.classList.remove('popup_off');
+    popup.classList.add('popup_on');
+    nameInput.value = nameOutput.innerText;
+    descriptionInput.value = descriptionOutput.innerText;
 };
 
 let turnOffPopupVisability = function() {
-    popupOn.classList.add('popup_off');
+    popup.classList.remove('popup_on');
+};
+
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    nameOutput.textContent = nameInput.value; 
+    descriptionOutput.textContent = descriptionInput.value;
 };
 
 popupOpenButton.addEventListener('click', turnOnPopupVisability);
 popupCloseButton.addEventListener('click', turnOffPopupVisability);
 
-function formSubmitHandler (evt) {
-    
-    let nameInput = document.querySelector('.popup__name');
-    let descriptionInput = document.querySelector('.popup__description');
-    
-    evt.preventDefault();
-
-    let nameOutput = document.getElementById('name');
-    let descriptionOutput = document.getElementById('description');
-    
-    let nameText = nameInput.value;
-    let descriptionText = descriptionInput.value;
-    
-    nameOutput.textContent = nameText; 
-    descriptionOutput.textContent = descriptionText;
-};
-
-let submitButton = document.querySelector('.popup__submit-button');
-submitButton.addEventListener('click', formSubmitHandler);
-submitButton.addEventListener('click', turnOffPopupVisability);
-
- 
-
+userInformation.addEventListener('submit', formSubmitHandler);
+userInformation.addEventListener('submit', turnOffPopupVisability);

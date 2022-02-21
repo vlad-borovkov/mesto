@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
-    line-height: 48px;
+    line-height: 36px;
     color: #FFFFFF;
     margin: 0;
     margin-bottom: 16px;
@@ -14,12 +14,13 @@
 }
 
 @media screen and (max-width: 660px) and (min-width: 320px)   {
-
     .profile__info-name {
         font-weight: 500;
         font-size: 27px;
         line-height: 33px;
         margin-bottom: 0px;
+        max-width: 189px;
+        margin-left: 37px;
     }   
 }
 

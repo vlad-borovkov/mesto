@@ -7,23 +7,28 @@
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 40px;
     text-align: center;
-    color: #FFFFFF;
+    color: rgb(255, 255, 255);
     margin-left: 36px;
     margin-bottom: 30px;
 }
 
 .popup__submit-button:hover {
-    cursor: url(/images/Cursor_1.png), pointer;
+    cursor: url(/images/Cursor_1.svg), pointer;
 }
 
 @media screen and (max-width: 580px) and (min-width: 320px)   {
-
     .popup__submit-button {
         width: 238px;
         height: 46px;
         margin-left: 0;
+        font-size: 14px;
+        font-size: 14px;
+        line-height: 40px;
+        text-align: center;
+        margin-left: 36px;
+        margin-bottom: 30px;
     }
    
 }

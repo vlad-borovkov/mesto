@@ -1,7 +1,7 @@
 .popup__description {
     display: block;
     margin: 0;
-    margin-bottom: 48px;
+    margin-bottom: 58px;
     font-family: inherit;
     max-width: 358px;
     margin-left: 36px;
@@ -21,6 +21,8 @@
     .popup__description {
         margin-left: 0;
         width: 238px;
+        line-height: 2;
+        margin-bottom: 46px;
     }
    
 }

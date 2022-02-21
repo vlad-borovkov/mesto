@@ -3,10 +3,11 @@
     flex-direction: row;
     justify-content: space-between;
     max-width: 336px;
+    margin-right: 10px;
+    }
 }
 
-@media screen and (max-width: 660px) and (min-width: 320px)   {
-
+@media screen and (max-width: 660px) and (min-width: 320px)   { 
     .profile__info-title {
         display: flex;
         flex-direction: row;
