@@ -1,12 +1,9 @@
 .profile__add-button {
-
   width: 150px;
   height: 50px;
-
-  margin-left: auto;
-  border-radius: 2px;
   margin: 0;
   margin-left: auto;
+  border-radius: 2px;
   background-color: transparent;
   background: url(/images/Add_Button_descktop.svg);
   background-repeat: no-repeat;

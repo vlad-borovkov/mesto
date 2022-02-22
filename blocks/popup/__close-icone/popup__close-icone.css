@@ -16,10 +16,11 @@
     cursor: url(/images/Cursor_1.svg), pointer;
 }
 
-@media screen and (max-width: 580px) and (min-width: 320px)   {
+@media screen and (max-width: 580px) and (min-width: 320px) {
     .popup__close-icone {
         top: -11.5%;
         left: 46.5%;
         width: 20px;
         height: 20px;
     }
+  }

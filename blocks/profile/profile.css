@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     margin: 0 auto;
-    max-width: 880px; 
+    max-width: 880px;
     padding-left: 30px;
     padding-right: 30px;
 }
@@ -13,5 +13,5 @@
     flex-direction: column;
     justify-content: center;
     max-width: 880px;
-    } 
+    }
 }
