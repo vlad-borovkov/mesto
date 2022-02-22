@@ -5,6 +5,10 @@
     left: 102%;
     width: 32px;
     height: 32px;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0;
 }
 
 .popup__close-icone:hover {

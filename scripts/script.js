@@ -5,8 +5,8 @@ let popup = document.querySelector('.popup');
 let nameOutput = document.getElementById('name');
 let descriptionOutput = document.getElementById('description');
 
-let nameInput = document.querySelector('.popup__name');
-let descriptionInput = document.querySelector('.popup__description'); 
+let nameInput = document.getElementById('userName');
+let descriptionInput = document.getElementById('userDescription');
 
 let turnOnPopupVisability = function() {
     popup.classList.add('popup_on');
@@ -20,12 +20,12 @@ let turnOffPopupVisability = function() {
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    nameOutput.textContent = nameInput.value; 
+    nameOutput.textContent = nameInput.value;
     descriptionOutput.textContent = descriptionInput.value;
+
+    turnOffPopupVisability();
 };
 
 popupOpenButton.addEventListener('click', turnOnPopupVisability);
 popupCloseButton.addEventListener('click', turnOffPopupVisability);
-
 userInformation.addEventListener('submit', formSubmitHandler);
-userInformation.addEventListener('submit', turnOffPopupVisability);

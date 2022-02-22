@@ -3,7 +3,7 @@
     flex-direction: column;
     width: 430px;
     height: 330px;
-    margin-top: -155px;
+    margin-top: -105px;
     border-radius: 10px;
     background-color: white;
     font-family: Inter, Arial, sans-serif;
@@ -16,5 +16,5 @@
         max-height: 322px;
         margin-top: -132px;
         align-items: center;
-    } 
+    }
 }

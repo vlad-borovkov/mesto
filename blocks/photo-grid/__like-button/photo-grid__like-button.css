@@ -1,5 +1,9 @@
 .photo-grid__like-button {
+    margin: 0;
     margin-right: 20px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
 }
 
 .photo-grid__like-button:hover {
@@ -10,5 +14,6 @@
 .photo-grid__like-button:active {
     opacity: 1;
     background-image: url(/images/Like_black.svg);
+    background-repeat: no-repeat;
     cursor: url(/images/Cursor_1.svg), pointer;
 }
