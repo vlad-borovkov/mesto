@@ -1,7 +1,7 @@
 .profile__info-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 336px;
-    margin-right: 10px;
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 336px;
+  margin-right: 10px;
+}
