@@ -10,8 +10,8 @@ let descriptionInput = document.getElementById('userDescription');
 
 let turnOnPopupVisability = function() {
     popup.classList.add('popup_on');
-    nameInput.value = nameOutput.innerText;
-    descriptionInput.value = descriptionOutput.innerText;
+    nameInput.value = nameOutput.textContent;
+    descriptionInput.value = descriptionOutput.textContent;
 };
 
 let turnOffPopupVisability = function() {
