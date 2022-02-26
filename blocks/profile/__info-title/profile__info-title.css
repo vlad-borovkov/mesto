@@ -1,7 +1,16 @@
 .profile__info-title {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  max-width: 336px;
+  width: 365px;
   margin-right: 10px;
+  align-items: center;
+}
+
+@media screen and (max-width: 660px) and (min-width: 320px) {
+  .profile__info-title {
+    margin-right: 0px;
+    align-items: center;
+    justify-content: center;
+    max-width: 310px;
+  }
 }

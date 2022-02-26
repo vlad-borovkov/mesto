@@ -8,13 +8,19 @@
   background-image: url(../../../images/Add_Button_descktop.svg);
   background-repeat: no-repeat;
   object-fit: cover;
-  border: none;
+  border: 2px;
   padding: 0;
 }
 
 .profile__add-button:hover {
   opacity: 0.6;
   cursor: url(../../../images/Cursor_1.svg), pointer;
+}
+
+@media screen and (max-width: 915px) and (min-width: 661px){
+  .profile__add-button {
+    margin-right: 20px;
+  }
 }
 
 @media screen and (max-width: 660px) and (min-width: 320px)   {
