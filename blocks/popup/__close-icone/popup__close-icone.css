@@ -1,8 +1,8 @@
 .popup__close-icone {
-  position: absolute;
+  position: relative;
   display: block;
-  top: 155px;
-  left: 864px;
+  top: -10px;
+  left: 239px;
   width: 32px;
   height: 32px;
   margin: 0;
