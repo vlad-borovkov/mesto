@@ -28,6 +28,7 @@
     <section class="photo-grid">
       <div class="photo-grid__item">
         <img class="photo-grid__card-image" src="images/card_example_1.jpg" alt="черногория">
+        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
           <h2 class="photo-grid__card-title">Черногория</h2>
           <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
@@ -35,6 +36,7 @@
       </div>
       <div class="photo-grid__item">
         <img class="photo-grid__card-image" src="images/card/card_Capa_Rocka.jpg" alt="капа рока">
+        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
           <h2 class="photo-grid__card-title">Капа Рока</h2>
           <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
@@ -42,6 +44,7 @@
       </div>
       <div class="photo-grid__item">
         <img class="photo-grid__card-image" src="images/card/card_elbrus.jpg" alt="эльбрус">
+        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
           <h2 class="photo-grid__card-title">Эльбрус</h2>
           <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
@@ -49,6 +52,7 @@
       </div>
       <div class="photo-grid__item">
         <img class="photo-grid__card-image" src="images/card/card_katynriver.jpg" alt="катунь">
+        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
           <h2 class="photo-grid__card-title">Катунь</h2>
           <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
@@ -56,6 +60,7 @@
       </div>
       <div class="photo-grid__item">
         <img class="photo-grid__card-image" src="images/card/card_chiketaman.jpg" alt="перевал чике-таман">
+        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
           <h2 class="photo-grid__card-title">Перевал Чике-Таман</h2>
           <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
@@ -63,6 +68,7 @@
       </div>
       <div class="photo-grid__item">
         <img class="photo-grid__card-image" src="images/card/card_karellia.jpg" alt="карелия">
+        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
           <h2 class="photo-grid__card-title">Карелия</h2>
           <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
@@ -80,6 +86,16 @@
           </form>
         </div>
       </div>
+      <div class="popup-place popup-place_on">
+        <button class="popup-place__close-icone" type="button"></button>
+        <div class="popup-place__container">
+          <form class="popup-place__container-form" id="addUserCard" name="form_2">
+            <h2 class="popup-place__title">Новое место</h2>
+            <input id="userPlace" class="popup-place__input" type="text" name="user-place" placeholder="">
+            <input id="linkImage" class="popup-place__input" type="text" name="link-image" placeholder="">
+            <button class="popup-place__submit-button" type="submit" value="Сохранить">Создать</button>
+          </form>
+        </div>
     </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>

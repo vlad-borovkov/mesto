@@ -1,0 +1,17 @@
+.photo-grid__card-delete {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 5.5%;
+  left: 86.5%;
+}
+
+.photo-grid__card-delete:hover {
+  opacity: 60%;
+  cursor: url(../../../images/Cursor_1.svg), pointer;
+}
+

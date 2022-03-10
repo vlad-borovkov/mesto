@@ -1,0 +1,31 @@
+.popup-place__close-icone {
+  position: relative;
+  display: block;
+  top: -10px;
+  left: 239px;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  background-image: url(../../../images/Close_Icon.svg);
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.popup-place__close-icone:hover {
+  opacity: 0.6;
+  cursor: url(../../../images/Cursor_1.svg), pointer;
+}
+
+@media screen and (max-width: 580px) and (min-width: 320px) {
+  .popup-place__close-icone {
+    background-image: url(../../../images/Close_Icon_mobile.svg);
+    left: 131px;
+    top: -16px;
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+}
