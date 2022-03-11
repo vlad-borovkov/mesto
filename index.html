@@ -25,8 +25,20 @@
       </div>
       <button class="profile__add-button" type="button"></button>
     </section>
+
     <section class="photo-grid">
+      <template id="placeCard">
       <div class="photo-grid__item">
+        <img class="photo-grid__card-image" src="" alt="">
+        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
+        <div class="photo-grid__card-description">
+          <h2 class="photo-grid__card-title"></h2>
+          <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
+        </div>
+      </div>
+      </template>
+
+     <!--<div class="photo-grid__item">
         <img class="photo-grid__card-image" src="images/card_example_1.jpg" alt="черногория">
         <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
@@ -73,7 +85,7 @@
           <h2 class="photo-grid__card-title">Карелия</h2>
           <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
         </div>
-      </div>
+      </div> -->
     </section>
       <div class="popup">
         <button class="popup__close-icone" type="button"></button>
