@@ -13,10 +13,11 @@
 
 @media screen and (max-width: 580px) and (min-width: 320px)   {
   .popup-place__title {
+    align-self: baseline;
     font-size: 18px;
     line-height: 22px;
     margin-top: 26px;
-    margin-left: 14px;
+    margin-left: 0px;
     margin-right: 22px;
     margin-bottom: 75px;
   }

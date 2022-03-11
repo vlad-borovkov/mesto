@@ -1,5 +1,5 @@
 .popup-place {
-  /* display: none; */
+  display: none;
   position: fixed;
   flex-direction: column;
   justify-content: center;
