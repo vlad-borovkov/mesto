@@ -30,11 +30,44 @@ const initialCards = [
 const placeCardTemplate = document.querySelector('#placeCard').content;
 let placeCardContainer = document.querySelector('.photo-grid');
 
-const placeCardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
-placeCardOnPage.querySelector('.photo-grid__card-image').src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
-placeCardOnPage.querySelector('.photo-grid__card-title').textContent = 'Черногория';
 
-placeCardContainer.append(placeCardOnPage);
+function createCard(name, link) {
+  const CardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
+  const deleteButton = CardOnPage.querySelector('.photo-grid__card-delete');
+
+  let article = CardOnPage.querySelector('.photo-grid__card-title').textContent = name;
+  let altDescription = CardOnPage.querySelector('.photo-grid__card-image').alt = name;
+  let image = CardOnPage.querySelector('.photo-grid__card-image').src = link;
+
+  CardOnPage.querySelector('.photo-grid__like-button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('photo-grid__like-button_active');
+  })
+
+  deleteButton.addEventListener('click', function () {
+    const cardItem = deleteButton.closest('.photo-grid__item');
+    cardItem.remove();
+  })
+
+  let renderCard = placeCardContainer.append(CardOnPage);
+  return renderCard;
+}
+//функция создания карточки+слушатели(лайк, удаление)
+
+initialCards.forEach(function (cardItem) {
+  createCard(cardItem.name, cardItem.link);
+});
+//загрузка из "коробки"
+
+function formPlaceSubmit (evt) {
+  evt.preventDefault();
+  let name = placeInput.value;
+  let link = imageInput.value;
+
+  let renderCard = createCard(name, link);
+  turnOffPopupPlaceVisability()
+  return renderCard
+};
+//добавление картинки и места через кнопку
 
 let popup = document.querySelector('.popup');
 let popupAddPlace = document.querySelector('.popup-place');
@@ -44,13 +77,15 @@ let popupOpenButton = document.querySelector('.profile__info-edit-button');
 let popupPlaceOpenButton = document.querySelector('.profile__add-button');
 let popupCloseButton = document.querySelector('.popup__close-icone');
 let popupAddPlaceCloseButton = document.querySelector('.popup-place__close-icone');
-//кнопки открытия-закрытия
-
+let placeSubmitButton = document.querySelector('.popup-place__submit-button');
+//кнопки
 
 let nameOutput = document.getElementById('name');
 let descriptionOutput = document.getElementById('description');
 let nameInput = document.getElementById('userName');
 let descriptionInput = document.getElementById('userDescription');
+let imageInput = document.getElementById('linkImage');
+let placeInput = document.getElementById('userPlace');
 //поля для ввода текста в popup
 
 let turnOnPopupVisability = function() {
@@ -78,6 +113,7 @@ function formSubmitHandler (evt) {
     turnOffPopupVisability();
 };
 
+placeSubmitButton.addEventListener('click', formPlaceSubmit);
 popupPlaceOpenButton.addEventListener('click', turnOnPopupPlaceVisability);
 popupAddPlaceCloseButton.addEventListener('click', turnOffPopupPlaceVisability);
 popupOpenButton.addEventListener('click', turnOnPopupVisability);
