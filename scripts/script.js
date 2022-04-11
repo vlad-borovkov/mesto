@@ -71,7 +71,8 @@ function formPlaceSubmit (evt) {
 
 let popup = document.querySelector('.popup');
 let popupAddPlace = document.querySelector('.popup-place');
-//окна менюшек popup
+let popupGallery = document.querySelector('.popup-gallery');
+//окна popup
 
 let popupOpenButton = document.querySelector('.profile__info-edit-button');
 let popupPlaceOpenButton = document.querySelector('.profile__add-button');
@@ -100,11 +101,19 @@ let turnOffPopupVisability = function() {
 
 let turnOnPopupPlaceVisability = function() {
     popupAddPlace.classList.add('popup-place_on');
-}
+};
 
 let turnOffPopupPlaceVisability = function() {
   popupAddPlace.classList.remove('popup-place_on');
-}
+};
+
+let turnOnPopupGallery = function() {
+  popupGallery.classList.add('popup__gallery_on');
+};
+
+let turnOffPopupGallery = function() {
+  popupGallery.classList.remove('popup__gallery_on');
+};
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
