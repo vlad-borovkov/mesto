@@ -56,7 +56,7 @@ function createCard(name, link) {
     cardItem.remove();
   })
 
-  let renderCard = placeCardContainer.append(CardOnPage);
+  let renderCard = placeCardContainer.prepend(CardOnPage);
   return renderCard;
 }
 //функция создания карточки+слушатели(лайк, удаление, открытие галлереи)
