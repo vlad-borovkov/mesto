@@ -6,3 +6,6 @@
   border-top-right-radius: 10px;
 }
 
+.photo-grid__card-image:hover{
+  cursor: pointer;
+}

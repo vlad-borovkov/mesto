@@ -1,6 +1,9 @@
 .popup-place {
-  display: none;
+  visibility: hidden;
   position: fixed;
+  display: flex;
+  opacity: 0;
+  transition: 0.5s;
   flex-direction: column;
   justify-content: center;
   align-items: center;
