@@ -40,8 +40,8 @@ function createCard(name, link) {
   const altDescription = CardOnPage.querySelector('.photo-grid__card-image').alt = name;
   const image = CardOnPage.querySelector('.photo-grid__card-image').src = link;
 
-  CardOnPage.querySelector('.photo-grid__card-image').addEventListener('click', function () {
-    turnOnPopupGallery()
+  CardOnPage.querySelector('.photo-grid__card-image').addEventListener('click', function (evt) {
+    openPopup(popupGallery);
     document.querySelector('.popup_gallery-image').src = link;
     document.querySelector('.popup_gallery-image').alt = name;
     document.querySelector('.popup_gallery-description').textContent = name;
@@ -66,25 +66,17 @@ initialCards.forEach(function (cardItem) {
 });
 //загрузка из "коробки"
 
-function formPlaceSubmit (evt) {
-  evt.preventDefault();
-  let name = placeInput.value;
-  let link = imageInput.value;
 
-  let renderCard = createCard(name, link);
-  turnOffPlacePopup()
-  return renderCard
-};
-//добавление картинки и места через кнопку
 
-let popup = document.querySelector('.popup_user');
+let popup = document.querySelector('.popup');
+let popupUser = document.querySelector('.popup_user');
 let popupAddPlace = document.querySelector('.popup_place');
 let popupGallery = document.querySelector('.popup_gallery');
 //окна popup
 
-let popupOpenButton = document.querySelector('.profile__info-edit-button');
+let popupUserOpenButton = document.querySelector('.profile__info-edit-button');
 let popupPlaceOpenButton = document.querySelector('.profile__add-button');
-let popupCloseButton = document.querySelector('.popup_user-close-icone');
+let popupUserCloseButton = document.querySelector('.popup_user-close-icone');
 let popupAddPlaceCloseButton = document.querySelector('.popup_place-close-icone');
 let popupGalleryClose = document.querySelector('.popup_gallery-close-icone');
 //кнопки открытия-закрытия popup
@@ -101,45 +93,42 @@ const placeInput = document.querySelector('.popup_place_location-input');
 const imageInput = document.querySelector('.popup_place_link-input');
 //поля для ввода-вывода даты
 
-let turnOnUserPopup = function() {
-    popup.classList.add('popup_user_on');
-    nameInput.value = nameOutput.textContent;
-    descriptionInput.value = descriptionOutput.textContent;
-};
+function openPopup(popup) {
+  popup.classList.add('popup_on');
+}
+popupUserOpenButton.addEventListener('click', (event) => openPopup(popupUser));
+popupPlaceOpenButton.addEventListener('click', (event) => openPopup(popupAddPlace));
+//функция открытия popup + слушатели
 
-let turnOffUserPopup = function() {
-    popup.classList.remove('popup_user_on');
-};
+function closePopup(popup) {
+  popup.classList.remove('popup_on');
+}
+popupUserCloseButton.addEventListener('click', (event) => closePopup(popupUser));
+popupAddPlaceCloseButton.addEventListener('click', (event) => closePopup(popupAddPlace));
+popupGalleryClose.addEventListener('click', (event) => closePopup(popupGallery));
+//функция закрытия popup + слушатели
 
-let turnOnPlacePopup = function() {
-    popupAddPlace.classList.add('popup_place_on');
-};
+function formPlaceSubmit (evt) {
+  evt.preventDefault();
+  let name = placeInput.value;
+  let link = imageInput.value;
 
-let turnOffPlacePopup = function() {
-  popupAddPlace.classList.remove('popup_place_on');
+  let renderCard = createCard(name, link);
+  closePopup(popupAddPlace)
+  return renderCard
 };
-
-let turnOnPopupGallery = function() {
-  popupGallery.classList.add('popup_gallery_on');
-};
-
-let turnOffPopupGallery = function() {
-  popupGallery.classList.remove('popup_gallery_on');
-};
-
 function formSubmitUser (evt) {
-    evt.preventDefault();
-    nameOutput.textContent = nameInput.value;
-    descriptionOutput.textContent = descriptionInput.value;
-    turnOffUserPopup();
+  evt.preventDefault();
+  nameOutput.textContent = nameInput.value;
+  descriptionOutput.textContent = descriptionInput.value;
+  closePopup(popupUser);
 };
-
 userForm.addEventListener('submit', formSubmitUser);
 placeForm.addEventListener('submit', formPlaceSubmit);
+//функции подтверждения форм user и place + слушатели
 
-popupPlaceOpenButton.addEventListener('click', turnOnPlacePopup);
-popupAddPlaceCloseButton.addEventListener('click', turnOffPlacePopup);
-popupOpenButton.addEventListener('click', turnOnUserPopup);
-popupCloseButton.addEventListener('click', turnOffUserPopup);
-popupGalleryClose.addEventListener('click', turnOffPopupGallery);
-//слушатели открытия-закрытия, сабмита
+
+
+
+
+
