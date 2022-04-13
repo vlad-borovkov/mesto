@@ -42,9 +42,9 @@ function createCard(name, link) {
 
   CardOnPage.querySelector('.photo-grid__card-image').addEventListener('click', function () {
     turnOnPopupGallery()
-    document.querySelector('.popup-gallery__image').src = link;
-    document.querySelector('.popup-gallery__image').alt = name;
-    document.querySelector('.popup-gallery__description').textContent = name;
+    document.querySelector('.popup_gallery-image').src = link;
+    document.querySelector('.popup_gallery-image').alt = name;
+    document.querySelector('.popup_gallery-description').textContent = name;
   })
 
   CardOnPage.querySelector('.photo-grid__like-button').addEventListener('click', function (evt) {
@@ -72,69 +72,74 @@ function formPlaceSubmit (evt) {
   let link = imageInput.value;
 
   let renderCard = createCard(name, link);
-  turnOffPopupPlaceVisability()
+  turnOffPlacePopup()
   return renderCard
 };
 //добавление картинки и места через кнопку
 
-let popup = document.querySelector('.popup');
-let popupAddPlace = document.querySelector('.popup-place');
-let popupGallery = document.querySelector('.popup-gallery');
+let popup = document.querySelector('.popup_user');
+let popupAddPlace = document.querySelector('.popup_place');
+let popupGallery = document.querySelector('.popup_gallery');
 //окна popup
 
 let popupOpenButton = document.querySelector('.profile__info-edit-button');
 let popupPlaceOpenButton = document.querySelector('.profile__add-button');
-let popupCloseButton = document.querySelector('.popup__close-icone');
-let popupAddPlaceCloseButton = document.querySelector('.popup-place__close-icone');
-let placeSubmitButton = document.querySelector('.popup-place__submit-button');
-let popupGalleryClose = document.querySelector('.popup-gallery__close-icone');
-//кнопки
+let popupCloseButton = document.querySelector('.popup_user-close-icone');
+let popupAddPlaceCloseButton = document.querySelector('.popup_place-close-icone');
+let popupGalleryClose = document.querySelector('.popup_gallery-close-icone');
+//кнопки открытия-закрытия popup
 
-let nameOutput = document.getElementById('name');
-let descriptionOutput = document.getElementById('description');
-let nameInput = document.getElementById('userName');
-let descriptionInput = document.getElementById('userDescription');
-let imageInput = document.getElementById('linkImage');
-let placeInput = document.getElementById('userPlace');
-//поля для ввода текста в popup
+const userForm = document.querySelector('.popup_user-form');
+const placeForm = document.querySelector('.popup_place-form');
+//формы
 
-let turnOnPopupVisability = function() {
-    popup.classList.add('popup_on');
+const nameInput = document.querySelector('.popup_user_name-input');
+const nameOutput = document.querySelector('.profile__info-name');
+const descriptionInput = document.querySelector('.popup_user_description-input');
+const descriptionOutput = document.querySelector('.profile__info-description');
+const placeInput = document.querySelector('.popup_place_location-input');
+const imageInput = document.querySelector('.popup_place_link-input');
+//поля для ввода-вывода даты
+
+let turnOnUserPopup = function() {
+    popup.classList.add('popup_user_on');
     nameInput.value = nameOutput.textContent;
     descriptionInput.value = descriptionOutput.textContent;
 };
 
-let turnOffPopupVisability = function() {
-    popup.classList.remove('popup_on');
+let turnOffUserPopup = function() {
+    popup.classList.remove('popup_user_on');
 };
 
-let turnOnPopupPlaceVisability = function() {
-    popupAddPlace.classList.add('popup-place_on');
+let turnOnPlacePopup = function() {
+    popupAddPlace.classList.add('popup_place_on');
 };
 
-let turnOffPopupPlaceVisability = function() {
-  popupAddPlace.classList.remove('popup-place_on');
+let turnOffPlacePopup = function() {
+  popupAddPlace.classList.remove('popup_place_on');
 };
 
 let turnOnPopupGallery = function() {
-  popupGallery.classList.add('popup__gallery_on');
+  popupGallery.classList.add('popup_gallery_on');
 };
 
 let turnOffPopupGallery = function() {
-  popupGallery.classList.remove('popup__gallery_on');
+  popupGallery.classList.remove('popup_gallery_on');
 };
 
-function formSubmitHandler (evt) {
+function formSubmitUser (evt) {
     evt.preventDefault();
     nameOutput.textContent = nameInput.value;
     descriptionOutput.textContent = descriptionInput.value;
-    turnOffPopupVisability();
+    turnOffUserPopup();
 };
 
-placeSubmitButton.addEventListener('click', formPlaceSubmit);
-popupPlaceOpenButton.addEventListener('click', turnOnPopupPlaceVisability);
-popupAddPlaceCloseButton.addEventListener('click', turnOffPopupPlaceVisability);
-popupOpenButton.addEventListener('click', turnOnPopupVisability);
-popupCloseButton.addEventListener('click', turnOffPopupVisability);
-userInformation.addEventListener('submit', formSubmitHandler);
+userForm.addEventListener('submit', formSubmitUser);
+placeForm.addEventListener('submit', formPlaceSubmit);
+
+popupPlaceOpenButton.addEventListener('click', turnOnPlacePopup);
+popupAddPlaceCloseButton.addEventListener('click', turnOffPlacePopup);
+popupOpenButton.addEventListener('click', turnOnUserPopup);
+popupCloseButton.addEventListener('click', turnOffUserPopup);
 popupGalleryClose.addEventListener('click', turnOffPopupGallery);
+//слушатели открытия-закрытия, сабмита

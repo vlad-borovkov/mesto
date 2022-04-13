@@ -18,10 +18,10 @@
       <img class="profile__avatar" src="images/Avatar.jpg" alt="аватар автора блога">
       <div class="profile__info">
         <div class="profile__info-title">
-        <h1 id="name" class="profile__info-name">Жак-Ив Кусто</h1>
+        <h1 class="profile__info-name">Жак-Ив Кусто</h1>
         <button class="profile__info-edit-button" type="button"></button>
         </div>
-      <p id="description" class="profile__info-description">Исследователь океана</p>
+      <p class="profile__info-description">Исследователь океана</p>
       </div>
       <button class="profile__add-button" type="button"></button>
     </section>
@@ -29,7 +29,7 @@
     <section class="photo-grid">
       <template id="placeCard">
       <div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="url" alt=" ">
+        <img class="photo-grid__card-image" src="//:0" alt=" ">
         <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
         <div class="photo-grid__card-description">
           <h2 class="photo-grid__card-title"></h2>
@@ -37,83 +37,34 @@
         </div>
       </div>
       </template>
-
-     <!--<div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="images/card_example_1.jpg" alt="черногория">
-        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
-        <div class="photo-grid__card-description">
-          <h2 class="photo-grid__card-title">Черногория</h2>
-          <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="images/card/card_Capa_Rocka.jpg" alt="капа рока">
-        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
-        <div class="photo-grid__card-description">
-          <h2 class="photo-grid__card-title">Капа Рока</h2>
-          <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="images/card/card_elbrus.jpg" alt="эльбрус">
-        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
-        <div class="photo-grid__card-description">
-          <h2 class="photo-grid__card-title">Эльбрус</h2>
-          <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="images/card/card_katynriver.jpg" alt="катунь">
-        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
-        <div class="photo-grid__card-description">
-          <h2 class="photo-grid__card-title">Катунь</h2>
-          <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="images/card/card_chiketaman.jpg" alt="перевал чике-таман">
-        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
-        <div class="photo-grid__card-description">
-          <h2 class="photo-grid__card-title">Перевал Чике-Таман</h2>
-          <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="images/card/card_karellia.jpg" alt="карелия">
-        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
-        <div class="photo-grid__card-description">
-          <h2 class="photo-grid__card-title">Карелия</h2>
-          <button class="photo-grid__like-button" type="button"><img src="images/like-button.svg" alt="нравится"></button>
-        </div>
-      </div> -->
     </section>
-      <div class="popup">
-        <button class="popup__close-icone" type="button"></button>
+      <div class="popup popup_user">
+        <button class="popup_user-close-icone" type="button"></button>
         <div class="popup__container">
-          <form class="popup__container-form" id="userInformation" name="form_1">
+          <form class="popup_user-form" name="form_1">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input id="userName" class="popup__input" type="text" name="firstname" placeholder="Жак-Ив Кусто">
-            <input id="userDescription" class="popup__input" type="text" name="description" placeholder="Исследователь океана">
-            <button class="popup__submit-button" type="submit" value="Сохранить">Сохранить</button>
+            <input class="popup_user_name-input" type="text" name="firstname" placeholder="Жак-Ив Кусто">
+            <input class="popup_user_description-input" type="text" name="description" placeholder="Исследователь океана">
+            <button class="popup__submit-button popup__submit-button_active" type="submit" value="Сохранить">Сохранить</button>
           </form>
         </div>
       </div>
-      <div class="popup-place">
-        <button class="popup-place__close-icone" type="button"></button>
-        <div class="popup-place__container">
-          <form class="popup-place__container-form" id="addUserCard" name="form_2">
-            <h2 class="popup-place__title">Новое место</h2>
-            <input id="userPlace" class="popup-place__input" type="text" name="user-place" placeholder="Название">
-            <input id="linkImage" class="popup-place__input" type="text" name="link-image" placeholder="Ссылка на картинку">
-            <button class="popup-place__submit-button" type="submit" value="Сохранить">Создать</button>
+      <div class="popup_place">
+        <button class="popup_place-close-icone" type="button"></button>
+        <div class="popup__container">
+          <form class="popup_place-form" id="addUserCard" name="form_2">
+            <h2 class="popup__title">Новое место</h2>
+            <input class="popup_place_location-input" type="text" name="user-place" placeholder="Название">
+            <input class="popup_place_link-input" type="text" name="link-image" placeholder="Ссылка на картинку">
+            <button class="popup__submit-button" type="submit" value="Сохранить">Создать</button>
           </form>
         </div>
       </div>
-      <div class="popup-gallery">
-        <div class="popup-gallery__container">
-          <button class="popup-gallery__close-icone" type="button"></button>
-          <img class="popup-gallery__image" src="url" alt="">
-          <p class="popup-gallery__description"></p>
+      <div class="popup_gallery">
+        <div class="popup_gallery-container">
+          <button class="popup_gallery-close-icone" type="button"></button>
+          <img class="popup_gallery-image" src="//:0" alt="">
+          <p class="popup_gallery-description"></p>
         </div>
       </div>
     </main>

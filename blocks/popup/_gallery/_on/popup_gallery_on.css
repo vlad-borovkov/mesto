@@ -1,6 +1,5 @@
-.popup_on{
+.popup_gallery_on {
   visibility: visible;
-  position: fixed;
   opacity: 1;
   transition: 0.5s;
 }

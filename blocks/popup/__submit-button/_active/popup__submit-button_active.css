@@ -1,0 +1,4 @@
+.popup__submit-button_active:hover {
+  cursor: url(../../../../images/Cursor_1.svg), pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+}

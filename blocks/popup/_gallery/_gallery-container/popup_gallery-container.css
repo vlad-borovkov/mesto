@@ -1,0 +1,5 @@
+.popup_gallery-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
