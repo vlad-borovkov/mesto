@@ -1,10 +1,10 @@
-.popup_user-form {
+.popup__user_form {
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (max-width: 580px) and (min-width: 320px)   {
-  .popup_user-form {
+  .popup__user_form {
     align-items: center;
   }
 }

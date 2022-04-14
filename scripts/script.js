@@ -1,23 +1,23 @@
 const popup = document.querySelector('.popup');
-const popupUser = document.querySelector('.popup_user');
+const popupUser = document.querySelector('.popup__user');
 const popupAddPlace = document.querySelector('.popup_place');
 const popupGallery = document.querySelector('.popup_gallery');
 //окна popup
 
 const popupUserOpenButton = document.querySelector('.profile__info-edit-button');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
-const popupUserCloseButton = document.querySelector('.popup_user-close-icone');
+const popupUserCloseButton = document.querySelector('.popup__user_close-icone');
 const popupAddPlaceCloseButton = document.querySelector('.popup_place-close-icone');
 const popupGalleryClose = document.querySelector('.popup_gallery-close-icone');
 //кнопки открытия-закрытия popup
 
-const userForm = document.querySelector('.popup_user-form');
+const userForm = document.querySelector('.popup__user_form');
 const placeForm = document.querySelector('.popup_place-form');
 //формы
 
-const nameInput = document.querySelector('.popup_user_name-input');
+const nameInput = document.querySelector('.popup__user_name-input');
 const nameOutput = document.querySelector('.profile__info-name');
-const descriptionInput = document.querySelector('.popup_user_description-input');
+const descriptionInput = document.querySelector('.popup__user_description-input');
 const descriptionOutput = document.querySelector('.profile__info-description');
 const placeInput = document.querySelector('.popup_place_location-input');
 const imageInput = document.querySelector('.popup_place_link-input');

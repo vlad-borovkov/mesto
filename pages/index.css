@@ -35,11 +35,11 @@
 @import url(../blocks/popup/_place/_place-close-icone/popup_place-close-icone.css);
 @import url(../blocks/popup/_place/_place-form/popup_place-form.css);
 
-@import url(../blocks/popup/_user/_description-input/popup_user_description-input.css);
-@import url(../blocks/popup/_user/_name-input/popup_user_name-input.css);
-@import url(../blocks/popup/_user/_user-close-icone/popup_user-close-icone.css);
-@import url(../blocks/popup/_user/_user-form/popup_user-form.css);
-@import url(../blocks/popup/_user/popup_user.css);
+@import url(../blocks/popup/__user/_close-icone/popup__user_close-icone.css);
+@import url(../blocks/popup/__user/_description-input/popup__user_description-input.css);
+@import url(../blocks/popup/__user/_form/popup__user_form.css);
+@import url(../blocks/popup/__user/_name-input/popup__user_name-input.css);
+@import url(../blocks/popup/__user/popup__user.css);
 
 
 @import url(../blocks/popup/_gallery/_on/popup_gallery_on.css);
