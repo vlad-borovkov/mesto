@@ -1,5 +1,5 @@
 const popup = document.querySelector('.popup');
-const popupUser = document.querySelector('.popup_user');
+const popupUser = document.querySelector('.popup_type_user');
 const popupAddPlace = document.querySelector('.popup_place');
 const popupGallery = document.querySelector('.popup_gallery');
 //окна popup
