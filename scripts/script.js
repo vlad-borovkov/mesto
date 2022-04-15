@@ -1,14 +1,14 @@
 const popup = document.querySelector('.popup');
 const popupUser = document.querySelector('.popup_type_user');
 const popupAddPlace = document.querySelector('.popup_type_place');
-const popupGallery = document.querySelector('.popup_gallery');
+const popupGallery = document.querySelector('.popup_type_gallery');
 //окна popup
 
 const popupUserOpenButton = document.querySelector('.profile__info-edit-button');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
 const popupUserCloseButton = document.querySelector('.popup__user-close-icone');
 const popupAddPlaceCloseButton = document.querySelector('.popup__place-close-icone');
-const popupGalleryClose = document.querySelector('.popup_gallery-close-icone');
+const popupGalleryClose = document.querySelector('.popup__gallery-close-icone');
 //кнопки открытия-закрытия popup
 
 const userForm = document.querySelector('.popup__user-form');
@@ -25,7 +25,7 @@ const imageInput = document.querySelector('.popup__container-form-input_link');
 
 const placeCardTemplate = document.querySelector('#placeCard').content;
 const placeCardContainer = document.querySelector('.photo-grid');
-//темплейт фото-карточки  
+//темплейт фото-карточки
 
 function createCard(name, link) {
   const cardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
@@ -37,9 +37,9 @@ function createCard(name, link) {
 
   cardOnPage.querySelector('.photo-grid__card-image').addEventListener('click', function (evt) {
     openPopup(popupGallery);
-    document.querySelector('.popup_gallery-image').src = link;
-    document.querySelector('.popup_gallery-image').alt = name;
-    document.querySelector('.popup_gallery-description').textContent = name;
+    document.querySelector('.popup__gallery-image').src = link;
+    document.querySelector('.popup__gallery-image').alt = name;
+    document.querySelector('.popup__gallery-description').textContent = name;
   })
 
   cardOnPage.querySelector('.photo-grid__like-button').addEventListener('click', function (evt) {
