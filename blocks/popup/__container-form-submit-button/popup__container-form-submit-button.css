@@ -1,4 +1,4 @@
-.popup__submit-button {
+.popup__container-form-submit-button {
   width: 358px;
   height: 50px;
   background-color: black;
@@ -16,12 +16,12 @@
   margin-top: 18px;
 }
 
-.popup__submit-button:hover {
+.popup__container-form-submit-button:hover {
   cursor: url(../../../images/Cursor_1.svg), pointer;
 }
 
 @media screen and (max-width: 580px) and (min-width: 320px)   {
-  .popup__submit-button {
+  .popup__container-form-submit-button {
     width: 238px;
     height: 46px;
     margin-left: 0;

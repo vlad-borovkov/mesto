@@ -26,20 +26,23 @@
 @import url(../blocks/popup/_place/popup_place.css);
 @import url(../blocks/popup/_gallery/popup_gallery.css);
 @import url(../blocks/popup/_on/popup_on.css);
-@import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__submit-button/_active/popup__submit-button_active.css);
-@import url(../blocks/popup/__submit-button/popup__submit-button.css);
-@import url(../blocks/popup/__title/popup__title.css);
+
 @import url(../blocks/popup/_place/_link-input/popup_place_link-input.css);
 @import url(../blocks/popup/_place/_location-input/popup_place_location-input.css);
 @import url(../blocks/popup/_place/_place-close-icone/popup_place-close-icone.css);
 @import url(../blocks/popup/_place/_place-form/popup_place-form.css);
 
-@import url(../blocks/popup/__user/_close-icone/popup__user_close-icone.css);
-@import url(../blocks/popup/__user/_description-input/popup__user_description-input.css);
-@import url(../blocks/popup/__user/_form/popup__user_form.css);
-@import url(../blocks/popup/__user/_name-input/popup__user_name-input.css);
-@import url(../blocks/popup/__user/popup__user.css);
+
+@import url(../blocks/popup/__container-form-input/_user-description/popup__container-form-input_user-description.css);
+@import url(../blocks/popup/__container-form-input/_user-name/popup__container-form-input_user-name.css);
+@import url(../blocks/popup/__container-form-submit-button/popup__container-form-submit-button.css);
+@import url(../blocks/popup/__container-form-submit-button/_active/popup__container-form-submit-button_active.css);
+@import url(../blocks/popup/__container-form-title/popup__container-form-title.css);
+@import url(../blocks/popup/__container-form/popup__container-form.css);
+@import url(../blocks/popup/__container-form/_user-form/popup__container-form_user-form.css);
+
+@import url(../blocks/popup/_user/popup_user.css);
+@import url(../blocks/popup/_user-close-icone/popup_user-close-icone.css);
 
 
 @import url(../blocks/popup/_gallery/_on/popup_gallery_on.css);

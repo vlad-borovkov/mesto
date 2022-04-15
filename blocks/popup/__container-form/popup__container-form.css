@@ -1,4 +1,4 @@
-.popup__container {
+.popup__container-form {
   display: flex;
   flex-direction: column;
   width: 430px;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 580px) and (min-width: 320px)   {
-  .popup__container {
+  .popup__container-form {
     max-width: 282px;
     align-items: center;
   }
