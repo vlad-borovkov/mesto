@@ -43,6 +43,7 @@
 
 @import url(../blocks/popup/_type_user/popup_type_user.css);
 @import url(../blocks/popup/__user-close-icone/popup__user-close-icone.css);
+@import url(../blocks/popup/__container-form-input/popup__container-form-input.css);
 
 
 @import url(../blocks/popup/_gallery/_on/popup_gallery_on.css);
