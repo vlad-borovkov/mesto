@@ -11,7 +11,7 @@ const popupAddPlaceCloseButton = document.querySelector('.popup_place-close-icon
 const popupGalleryClose = document.querySelector('.popup_gallery-close-icone');
 //кнопки открытия-закрытия popup
 
-const userForm = document.querySelector('.popup__container-form_user-form');
+const userForm = document.querySelector('.popup__user-form');
 const placeForm = document.querySelector('.popup_place-form');
 //формы
 
