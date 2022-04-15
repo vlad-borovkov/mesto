@@ -1,10 +1,10 @@
-.popup_place-form {
+.popup__place-form {
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (max-width: 580px) and (min-width: 320px)   {
-  .popup_place-form {
+  .popup__place-form {
     align-items: center;
   }
 }

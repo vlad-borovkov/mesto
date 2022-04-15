@@ -1,31 +1,31 @@
 const popup = document.querySelector('.popup');
 const popupUser = document.querySelector('.popup_type_user');
-const popupAddPlace = document.querySelector('.popup_place');
+const popupAddPlace = document.querySelector('.popup_type_place');
 const popupGallery = document.querySelector('.popup_gallery');
 //окна popup
 
 const popupUserOpenButton = document.querySelector('.profile__info-edit-button');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
 const popupUserCloseButton = document.querySelector('.popup__user-close-icone');
-const popupAddPlaceCloseButton = document.querySelector('.popup_place-close-icone');
+const popupAddPlaceCloseButton = document.querySelector('.popup__place-close-icone');
 const popupGalleryClose = document.querySelector('.popup_gallery-close-icone');
 //кнопки открытия-закрытия popup
 
 const userForm = document.querySelector('.popup__user-form');
-const placeForm = document.querySelector('.popup_place-form');
+const placeForm = document.querySelector('.popup__place-form');
 //формы
 
 const nameInput = document.querySelector('.popup__container-form-input_user-name');
 const nameOutput = document.querySelector('.profile__info-name');
 const descriptionInput = document.querySelector('.popup__container-form-input_user-description');
 const descriptionOutput = document.querySelector('.profile__info-description');
-const placeInput = document.querySelector('.popup_place_location-input');
-const imageInput = document.querySelector('.popup_place_link-input');
+const placeInput = document.querySelector('.popup__container-form-input_location');
+const imageInput = document.querySelector('.popup__container-form-input_link');
 //поля для ввода-вывода даты
 
 const placeCardTemplate = document.querySelector('#placeCard').content;
 const placeCardContainer = document.querySelector('.photo-grid');
-//темплейт фото-карточки
+//темплейт фото-карточки  
 
 function createCard(name, link) {
   const cardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);

@@ -1,4 +1,4 @@
-.popup_place-close-icone{
+.popup__place-close-icone{
   position: relative;
   display: block;
   top: -10px;
@@ -9,19 +9,19 @@
   background-color: transparent;
   border: none;
   padding: 0;
-  background-image: url(../../../../images/Close_Icon.svg);
+  background-image: url(../../../images/Close_Icon.svg);
   background-repeat: no-repeat;
   object-fit: cover;
 }
 
-.popup_place-close-icone:hover {
+.popup__place-close-icone:hover {
   opacity: 0.6;
-  cursor: url(../../../../images/Cursor_1.svg), pointer;
+  cursor: url(../../../images/Cursor_1.svg), pointer;
 }
 
 @media screen and (max-width: 580px) and (min-width: 320px) {
-  .popup_place-close-icone{
-    background-image: url(../../../../images/Close_Icon_mobile.svg);
+  .popup__place-close-icone{
+    background-image: url(../../../images/Close_Icon_mobile.svg);
     left: 131px;
     top: -16px;
     position: relative;
