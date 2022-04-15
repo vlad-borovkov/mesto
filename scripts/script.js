@@ -6,7 +6,7 @@ const popupGallery = document.querySelector('.popup_gallery');
 
 const popupUserOpenButton = document.querySelector('.profile__info-edit-button');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
-const popupUserCloseButton = document.querySelector('.popup_user-close-icone');
+const popupUserCloseButton = document.querySelector('.popup_user_close-icone');
 const popupAddPlaceCloseButton = document.querySelector('.popup_place-close-icone');
 const popupGalleryClose = document.querySelector('.popup_gallery-close-icone');
 //кнопки открытия-закрытия popup
