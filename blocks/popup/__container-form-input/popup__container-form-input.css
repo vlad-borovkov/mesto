@@ -1,3 +1,31 @@
 .popup__container-form-input {
-  
+    display: block;
+    margin: 0;
+    margin-bottom: 0;
+    font-family: inherit;
+    max-width: 358px;
+    margin-left: 36px;
+    outline: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 8px;
+  }
+
+  @media screen and (max-width: 580px) and (min-width: 320px)   {
+    .popup__container-form-input_user-name {
+      margin-left: 0;
+      width: 238px;
+    }
+  }
+
+  .popup__name::-webkit-input-placeholder {color:#000000;}
+  .popup__name::-moz-placeholder          {color:#000000;}
+  .popup__name:-moz-placeholder           {color:#000000;}
+  .popup__name:-ms-input-placeholder      {color:#000000;}
 }
