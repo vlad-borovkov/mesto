@@ -27,6 +27,15 @@ const placeCardTemplate = document.querySelector('#placeCard').content;
 const placeCardContainer = document.querySelector('.photo-grid');
 //темплейт фото-карточки
 
+
+function defaultUserValue (name, description) {
+  name.value = "Жак-Ив Кусто";
+  description.value = "Исследователь океана";
+  return
+}
+defaultUserValue (nameInput, descriptionInput);
+//присвоение базовых значение для профиля user
+
 function createCard(name, link) {
   const cardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
   const deleteButton = cardOnPage.querySelector('.photo-grid__card-delete');
@@ -66,15 +75,22 @@ initialCards.forEach(function (cardItem) {
 });
 //загрузка из "коробки"
 
-function openPopup(popup) {
-  popup.classList.add('popup_on');
+
+
+function openPopup(somePopup) {
+  somePopup.classList.add('popup_on');
+  document.addEventListener('keydown', closeOnEsc);
+  closeOnOverlay();
 }
+
+
+
 popupUserOpenButton.addEventListener('click', (event) => openPopup(popupUser));
 popupPlaceOpenButton.addEventListener('click', (event) => openPopup(popupAddPlace));
 //функция открытия ВСЕХ popup + слушатели открытия
 
-function closePopup(popup) {
-  popup.classList.remove('popup_on');
+function closePopup(somePopup) {
+  somePopup.classList.remove('popup_on');
 }
 popupUserCloseButton.addEventListener('click', (event) => closePopup(popupUser));
 popupAddPlaceCloseButton.addEventListener('click', (event) => closePopup(popupAddPlace));
@@ -98,8 +114,15 @@ const closeOnOverlay = () => {
     });
   });
 };
-closeOnOverlay();
-//закрытие всех popup при клике на overlay
+
+const closeOnEsc = (evt) => {
+  const currentPopup = document.querySelector(".popup_on");
+     if (evt.key === 'Escape') {
+      closePopup(currentPopup);
+     }
+}
+
+//закрытие всех popup при клике на overlay и ESC
 
 function formPlaceSubmit (evt) {
   evt.preventDefault();
@@ -121,11 +144,7 @@ userForm.addEventListener('submit', formSubmitUser);
 placeForm.addEventListener('submit', formPlaceSubmit);
 //функции подтверждения форм user и place + слушатели
 
-function defaultUserValue (name, description) {
-  name.value = "Жак-Ив Кусто"
-  description.value = "Исследователь океана"
-  return
-}
-defaultUserValue (nameInput, descriptionInput);
-//присвоение базовых значение для профиля user
+
+
+
 
