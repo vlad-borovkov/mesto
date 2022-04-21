@@ -19,10 +19,9 @@ const enableValidation = (object) => {
      });
     };
 
-const setEventListeners = (formElement, object) => {
+  const setEventListeners = (formElement, object) => {
     const inputList = Array.from(formElement.querySelectorAll(`${object.inputSelector}`));
     const buttonElement = formElement.querySelector(`${object.submitButtonSelector}`);
-    console.log(inputList)
 
     toggleButtonState(inputList, buttonElement, object.inactiveButtonClass);
 

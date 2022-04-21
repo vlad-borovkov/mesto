@@ -81,6 +81,26 @@ popupAddPlaceCloseButton.addEventListener('click', (event) => closePopup(popupAd
 popupGalleryClose.addEventListener('click', (event) => closePopup(popupGallery));
 //функция закрытия ВСЕХ popup + слушатели
 
+const closeOnOverlay = () => {
+  const popupList = Array.from(document.querySelectorAll('.popup'));
+
+  popupList.forEach((popupElement) => {
+  popupElement.addEventListener('click', function (event) {
+   if (event.target.classList.contains("popup_type_user")) {
+    closePopup(popupUser);
+      };
+    if (event.target.classList.contains("popup_type_place")) {
+        closePopup(popupAddPlace);
+      };
+    if (event.target.classList.contains("popup_type_gallery")) {
+        closePopup(popupGallery);
+      };
+    });
+  });
+};
+closeOnOverlay();
+//закрытие всех popup при клике на overlay
+
 function formPlaceSubmit (evt) {
   evt.preventDefault();
   const name = placeInput.value;
@@ -100,3 +120,12 @@ function formSubmitUser (evt) {
 userForm.addEventListener('submit', formSubmitUser);
 placeForm.addEventListener('submit', formPlaceSubmit);
 //функции подтверждения форм user и place + слушатели
+
+function defaultUserValue (name, description) {
+  name.value = "Жак-Ив Кусто"
+  description.value = "Исследователь океана"
+  return
+}
+defaultUserValue (nameInput, descriptionInput);
+//присвоение базовых значение для профиля user
+
