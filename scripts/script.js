@@ -1,4 +1,4 @@
-const popup = document.querySelector('.popup');
+const popup = document.querySelector('.popup')
 const popupUser = document.querySelector('.popup_type_user');
 const popupAddPlace = document.querySelector('.popup_type_place');
 const popupGallery = document.querySelector('.popup_type_gallery');
@@ -29,26 +29,27 @@ const placeCardContainer = document.querySelector('.photo-grid');
 
 
 function defaultUserValue (name, description) {
-  name.value = "Жак-Ив Кусто";
-  description.value = "Исследователь океана";
-  return
+  name.value = nameOutput.textContent
+  description.value = descriptionOutput.textContent;
 }
-defaultUserValue (nameInput, descriptionInput);
 //присвоение базовых значение для профиля user
 
 function createCard(name, link) {
   const cardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
   const deleteButton = cardOnPage.querySelector('.photo-grid__card-delete');
+  const cardImage = cardOnPage.querySelector('.photo-grid__card-image');
+  const galleryImage = document.querySelector('.popup__gallery-image');
+  const galleryDescription = document.querySelector('.popup__gallery-description');
 
   cardOnPage.querySelector('.photo-grid__card-title').textContent = name;
-  cardOnPage.querySelector('.photo-grid__card-image').alt = name;
-  cardOnPage.querySelector('.photo-grid__card-image').src = link;
+  cardImage.alt = name;
+  cardImage.src = link;
 
-  cardOnPage.querySelector('.photo-grid__card-image').addEventListener('click', function (evt) {
+  cardImage.addEventListener('click', function (evt) {
     openPopup(popupGallery);
-    document.querySelector('.popup__gallery-image').src = link;
-    document.querySelector('.popup__gallery-image').alt = name;
-    document.querySelector('.popup__gallery-description').textContent = name;
+    galleryImage.src = link;
+    galleryImage.alt = name;
+    galleryDescription.textContent = name;
   })
 
   cardOnPage.querySelector('.photo-grid__like-button').addEventListener('click', function (evt) {
@@ -59,14 +60,13 @@ function createCard(name, link) {
     const cardItem = deleteButton.closest('.photo-grid__item');
     cardItem.remove();
   })
-  const doneCardOnPage = cardOnPage
-  return doneCardOnPage
+
+  return cardOnPage
 }
 //функция создания карточки+слушатели(лайк, удаление, открытие галлереи)
 
 function renderCard(name, link) {
   const renderCardOnPage = placeCardContainer.prepend(createCard(name, link));
-  return renderCardOnPage
 }
 //рендеринг карточки на сайт
 
@@ -76,21 +76,19 @@ initialCards.forEach(function (cardItem) {
 //загрузка из "коробки"
 
 
-
 function openPopup(somePopup) {
   somePopup.classList.add('popup_on');
   document.addEventListener('keydown', closeOnEsc);
-  closeOnOverlay();
 }
 
-
-
-popupUserOpenButton.addEventListener('click', (event) => openPopup(popupUser));
+popupUserOpenButton.addEventListener('click', (event) =>
+openPopup(popupUser), defaultUserValue(nameInput, descriptionInput));
 popupPlaceOpenButton.addEventListener('click', (event) => openPopup(popupAddPlace));
 //функция открытия ВСЕХ popup + слушатели открытия
 
 function closePopup(somePopup) {
   somePopup.classList.remove('popup_on');
+  document.removeEventListener('keydown', closeOnEsc);
 }
 popupUserCloseButton.addEventListener('click', (event) => closePopup(popupUser));
 popupAddPlaceCloseButton.addEventListener('click', (event) => closePopup(popupAddPlace));
@@ -102,27 +100,23 @@ const closeOnOverlay = () => {
 
   popupList.forEach((popupElement) => {
   popupElement.addEventListener('click', function (event) {
-   if (event.target.classList.contains("popup_type_user")) {
-    closePopup(popupUser);
-      };
-    if (event.target.classList.contains("popup_type_place")) {
-        closePopup(popupAddPlace);
-      };
-    if (event.target.classList.contains("popup_type_gallery")) {
-        closePopup(popupGallery);
+   if (event.target.classList.contains('popup')) {
+      closePopup(event.target)
       };
     });
   });
 };
+closeOnOverlay();
+//закрытие всех popup при клике на overlay
 
 const closeOnEsc = (evt) => {
-  const currentPopup = document.querySelector(".popup_on");
+
      if (evt.key === 'Escape') {
+      const currentPopup = document.querySelector('.popup_on');
       closePopup(currentPopup);
      }
 }
-
-//закрытие всех popup при клике на overlay и ESC
+//закрытие всех popup при нажатии ESC
 
 function formPlaceSubmit (evt) {
   evt.preventDefault();
@@ -131,14 +125,16 @@ function formPlaceSubmit (evt) {
 
   renderCard(name, link);
   closePopup(popupAddPlace)
-  return
+  placeInput.value = "";
+  imageInput.value = "";
+  enableValidation(validConfig);
 };
+
 function formSubmitUser (evt) {
   evt.preventDefault();
   nameOutput.textContent = nameInput.value;
   descriptionOutput.textContent = descriptionInput.value;
   closePopup(popupUser);
-  return
 };
 userForm.addEventListener('submit', formSubmitUser);
 placeForm.addEventListener('submit', formPlaceSubmit);
