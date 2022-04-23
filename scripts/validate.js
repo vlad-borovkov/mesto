@@ -37,7 +37,8 @@ const enableValidation = (object) => {
 const checkInputValidity = (formElement, inputElement, errorClass, inputErrorClass) => {
     if (!inputElement.validity.valid) {
       showInputError(formElement, inputElement, inputElement.validationMessage, errorClass, inputErrorClass);
-    } else {
+    }
+    else {
       hideInputError(formElement, inputElement, errorClass, inputErrorClass);
     }
 };

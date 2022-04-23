@@ -1,3 +1,4 @@
 .popup__form {
   align-content: flex-start;
+  cursor: default;
 }

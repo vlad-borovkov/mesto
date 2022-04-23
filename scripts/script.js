@@ -1,8 +1,11 @@
-const popup = document.querySelector('.popup')
 const popupUser = document.querySelector('.popup_type_user');
 const popupAddPlace = document.querySelector('.popup_type_place');
 const popupGallery = document.querySelector('.popup_type_gallery');
 //окна popup
+
+const galleryImage = document.querySelector('.popup__gallery-image');
+const galleryDescription = document.querySelector('.popup__gallery-description');
+//элементы галлереи
 
 const popupUserOpenButton = document.querySelector('.profile__info-edit-button');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
@@ -23,25 +26,18 @@ const placeInput = document.querySelector('.popup__container-form-input_location
 const imageInput = document.querySelector('.popup__container-form-input_link');
 //поля для ввода-вывода даты
 
-const placeCardTemplate = document.querySelector('#placeCard').content;
 const placeCardContainer = document.querySelector('.photo-grid');
-//темплейт фото-карточки
-
-
-function defaultUserValue (name, description) {
-  name.value = nameOutput.textContent
-  description.value = descriptionOutput.textContent;
-}
-//присвоение базовых значение для профиля user
+const placeCardTemplate = document.querySelector('#placeCard').content;
+//темплейт фото-карточки и место её вставки
 
 function createCard(name, link) {
   const cardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
   const deleteButton = cardOnPage.querySelector('.photo-grid__card-delete');
   const cardImage = cardOnPage.querySelector('.photo-grid__card-image');
-  const galleryImage = document.querySelector('.popup__gallery-image');
-  const galleryDescription = document.querySelector('.popup__gallery-description');
+  const cardTitle = cardOnPage.querySelector('.photo-grid__card-title');
+  //при выносе этих переменных в ГОВ, рендерится только одни карточка, код перестаёт работать
 
-  cardOnPage.querySelector('.photo-grid__card-title').textContent = name;
+  cardTitle.textContent = name;
   cardImage.alt = name;
   cardImage.src = link;
 
@@ -66,7 +62,7 @@ function createCard(name, link) {
 //функция создания карточки+слушатели(лайк, удаление, открытие галлереи)
 
 function renderCard(name, link) {
-  const renderCardOnPage = placeCardContainer.prepend(createCard(name, link));
+  placeCardContainer.prepend(createCard(name, link));
 }
 //рендеринг карточки на сайт
 
@@ -75,22 +71,44 @@ initialCards.forEach(function (cardItem) {
 });
 //загрузка из "коробки"
 
+function defaultUserValue (name, description) {
+  name.value = nameOutput.textContent
+  description.value = descriptionOutput.textContent;
+};
+//присвоение базовых значение для профиля user
+
+function errorUserReset() {
+  popupUser.querySelector('.name-input-error').innerText = "";
+  popupUser.querySelector('.description-input-error').innerText = "";
+
+  popupUser.querySelector('#name-input').classList.remove('popup__container-form-input_type_error');
+  popupUser.querySelector('#description-input').classList.remove('popup__container-form-input_type_error');
+};
+//сброс ошибки в input и span при повторном открытии окна USER
 
 function openPopup(somePopup) {
   somePopup.classList.add('popup_on');
-  document.addEventListener('keydown', closeOnEsc);
-}
+  document.addEventListener('keydown', closeOnEsc)
+};
 
-popupUserOpenButton.addEventListener('click', (event) =>
-openPopup(popupUser), defaultUserValue(nameInput, descriptionInput));
+popupUserOpenButton.addEventListener('click', () => {
+  errorUserReset();
+  openPopup(popupUser);
+  defaultUserValue(nameInput, descriptionInput);
+});
+
 popupPlaceOpenButton.addEventListener('click', (event) => openPopup(popupAddPlace));
 //функция открытия ВСЕХ popup + слушатели открытия
+
+
 
 function closePopup(somePopup) {
   somePopup.classList.remove('popup_on');
   document.removeEventListener('keydown', closeOnEsc);
 }
-popupUserCloseButton.addEventListener('click', (event) => closePopup(popupUser));
+popupUserCloseButton.addEventListener('click', (event) => {
+  closePopup(popupUser);
+});
 popupAddPlaceCloseButton.addEventListener('click', (event) => closePopup(popupAddPlace));
 popupGalleryClose.addEventListener('click', (event) => closePopup(popupGallery));
 //функция закрытия ВСЕХ popup + слушатели
@@ -110,7 +128,6 @@ closeOnOverlay();
 //закрытие всех popup при клике на overlay
 
 const closeOnEsc = (evt) => {
-
      if (evt.key === 'Escape') {
       const currentPopup = document.querySelector('.popup_on');
       closePopup(currentPopup);
@@ -127,8 +144,11 @@ function formPlaceSubmit (evt) {
   closePopup(popupAddPlace)
   placeInput.value = "";
   imageInput.value = "";
-  enableValidation(validConfig);
+
+  validConfig.submitButtonSelector.classList.add('popup__container-form-submit-button_disabled');
+  validConfig.submitButtonSelector.disabled = true;
 };
+//функция подтверждения формы user + сброс ошибок и значений по умолчанию при повторном открытии
 
 function formSubmitUser (evt) {
   evt.preventDefault();
