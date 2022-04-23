@@ -5,6 +5,8 @@
 
 @media screen and (max-width: 580px) and (min-width: 320px)   {
   .popup__error_visible {
-    margin-left: -93px;
+    margin-left: 0px;
+    max-width: 238px;
+    align-self: baseline;
   }
 }
