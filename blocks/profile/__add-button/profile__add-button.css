@@ -14,7 +14,7 @@
 
 .profile__add-button:hover {
   opacity: 0.6;
-  cursor: url(../../../images/Cursor_1.svg), pointer;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 915px) and (min-width: 661px){

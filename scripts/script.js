@@ -18,6 +18,9 @@ const userForm = document.querySelector('.popup__user-form');
 const placeForm = document.querySelector('.popup__place-form');
 //формы
 
+const submitUserButton = document.querySelector('.popup__container-form-submit-button');
+//кнопка формы User
+
 const nameInput = document.querySelector('.popup__container-form-input_user-name');
 const nameOutput = document.querySelector('.profile__info-name');
 const descriptionInput = document.querySelector('.popup__container-form-input_user-description');
@@ -35,7 +38,7 @@ function createCard(name, link) {
   const deleteButton = cardOnPage.querySelector('.photo-grid__card-delete');
   const cardImage = cardOnPage.querySelector('.photo-grid__card-image');
   const cardTitle = cardOnPage.querySelector('.photo-grid__card-title');
-  //при выносе этих переменных в ГОВ, рендерится только одни карточка, код перестаёт работать
+  //при выносе этих переменных в ГОВ, рендерится только одна карточка, код перестаёт работать
 
   cardTitle.textContent = name;
   cardImage.alt = name;
@@ -135,7 +138,7 @@ const closeOnEsc = (evt) => {
 }
 //закрытие всех popup при нажатии ESC
 
-function formPlaceSubmit (evt) {
+function submitPlaceForm (evt) {
   evt.preventDefault();
   const name = placeInput.value;
   const link = imageInput.value;
@@ -145,19 +148,19 @@ function formPlaceSubmit (evt) {
   placeInput.value = "";
   imageInput.value = "";
 
-  validConfig.submitButtonSelector.classList.add('popup__container-form-submit-button_disabled');
-  validConfig.submitButtonSelector.disabled = true;
+  submitUserButton.classList.add('popup__container-form-submit-button_disabled');
+  submitUserButton.disabled = true;
 };
 //функция подтверждения формы user + сброс ошибок и значений по умолчанию при повторном открытии
 
-function formSubmitUser (evt) {
+function submitUserForm (evt) {
   evt.preventDefault();
   nameOutput.textContent = nameInput.value;
   descriptionOutput.textContent = descriptionInput.value;
   closePopup(popupUser);
 };
-userForm.addEventListener('submit', formSubmitUser);
-placeForm.addEventListener('submit', formPlaceSubmit);
+userForm.addEventListener('submit', submitUserForm);
+placeForm.addEventListener('submit', submitPlaceForm);
 //функции подтверждения форм user и place + слушатели
 
 
