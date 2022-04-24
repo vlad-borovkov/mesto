@@ -18,7 +18,7 @@ const userForm = document.querySelector('.popup__user-form');
 const placeForm = document.querySelector('.popup__place-form');
 //формы
 
-const submitUserButton = document.querySelector('.popup__container-form-submit-button');
+const submitPlaceButton = document.querySelector('.popup__container-form-submit-button_type_place');
 //кнопка формы User
 
 const nameInput = document.querySelector('.popup__container-form-input_user-name');
@@ -148,8 +148,8 @@ function submitPlaceForm (evt) {
   placeInput.value = "";
   imageInput.value = "";
 
-  submitUserButton.classList.add('popup__container-form-submit-button_disabled');
-  submitUserButton.disabled = true;
+  submitPlaceButton.classList.add('popup__container-form-submit-button_disabled');
+  submitPlaceButton.disabled = true;
 };
 //функция подтверждения формы user + сброс ошибок и значений по умолчанию при повторном открытии
 

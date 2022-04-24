@@ -13,12 +13,12 @@
 
 .photo-grid__like-button:hover {
   opacity: 0.5;
-  cursor: url(../../../images/Cursor_1.svg), pointer;
+  cursor: pointer;
 }
 
 .photo-grid__like-button:active {
   opacity: 1;
   background-image: url(../../../images/Like_black.svg);
   background-repeat: no-repeat;
-  cursor: url(../../../images/Cursor_1.svg), pointer;
+  cursor: pointer;
 }

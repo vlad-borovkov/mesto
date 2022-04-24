@@ -12,6 +12,6 @@
 
 .photo-grid__card-delete:hover {
   opacity: 60%;
-  cursor: url(../../../images/Cursor_1.svg), pointer;
+  cursor: pointer;
 }
 

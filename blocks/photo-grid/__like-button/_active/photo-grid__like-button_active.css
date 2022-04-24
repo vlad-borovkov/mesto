@@ -7,6 +7,6 @@
 
 .photo-grid__like-button_active:hover {
   opacity: 0.5;
-  cursor: url(../../../../images/Cursor_1.svg), pointer;
+  cursor: pointer;
 }
 
