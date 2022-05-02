@@ -5,9 +5,9 @@ const validConfig = {
   inactiveButtonClass: 'popup__container-form-submit-button_disabled',
   inputErrorClass: 'popup__container-form-input_type_error',
   errorClass: 'popup__error_visible'
-};
+ };
 
-const enableValidation = (object) => {
+ const enableValidation = (object) => {
 
   const formList = Array.from(document.forms);
 

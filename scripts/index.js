@@ -1,10 +1,12 @@
+import { Card } from "./Card.js";
+
 const popupUser = document.querySelector('.popup_type_user');
 const popupAddPlace = document.querySelector('.popup_type_place');
 const popupGallery = document.querySelector('.popup_type_gallery');
 //окна popup
 
-const galleryImage = document.querySelector('.popup__gallery-image');
-const galleryDescription = document.querySelector('.popup__gallery-description');
+//const galleryImage = document.querySelector('.popup__gallery-image');
+//const galleryDescription = document.querySelector('.popup__gallery-description');
 //элементы галлереи
 
 const popupUserOpenButton = document.querySelector('.profile__info-edit-button');
@@ -30,49 +32,9 @@ const imageInput = document.querySelector('.popup__container-form-input_link');
 //поля для ввода-вывода даты
 
 const placeCardContainer = document.querySelector('.photo-grid');
-const placeCardTemplate = document.querySelector('#placeCard').content;
+//const placeCardTemplate = document.querySelector('#placeCard').content;
 //темплейт фото-карточки и место её вставки
 
-function createCard(name, link) {
-  const cardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
-  const deleteButton = cardOnPage.querySelector('.photo-grid__card-delete');
-  const cardImage = cardOnPage.querySelector('.photo-grid__card-image');
-  const cardTitle = cardOnPage.querySelector('.photo-grid__card-title');
-  //при выносе этих переменных в ГОВ, рендерится только одна карточка, код перестаёт работать
-
-  cardTitle.textContent = name;
-  cardImage.alt = name;
-  cardImage.src = link;
-
-  cardImage.addEventListener('click', function (evt) {
-    openPopup(popupGallery);
-    galleryImage.src = link;
-    galleryImage.alt = name;
-    galleryDescription.textContent = name;
-  })
-
-  cardOnPage.querySelector('.photo-grid__like-button').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('photo-grid__like-button_active');
-  })
-
-  deleteButton.addEventListener('click', function () {
-    const cardItem = deleteButton.closest('.photo-grid__item');
-    cardItem.remove();
-  })
-
-  return cardOnPage
-}
-//функция создания карточки+слушатели(лайк, удаление, открытие галлереи)
-
-function renderCard(name, link) {
-  placeCardContainer.prepend(createCard(name, link));
-}
-//рендеринг карточки на сайт
-
-initialCards.forEach(function (cardItem) {
-  renderCard(cardItem.name, cardItem.link);
-});
-//загрузка из "коробки"
 
 function defaultUserValue (name, description) {
   name.value = nameOutput.textContent
@@ -93,16 +55,13 @@ function openPopup(somePopup) {
   somePopup.classList.add('popup_on');
   document.addEventListener('keydown', closeOnEsc)
 };
-
 popupUserOpenButton.addEventListener('click', () => {
   errorUserReset();
   openPopup(popupUser);
   defaultUserValue(nameInput, descriptionInput);
 });
-
 popupPlaceOpenButton.addEventListener('click', (event) => openPopup(popupAddPlace));
 //функция открытия ВСЕХ popup + слушатели открытия
-
 
 
 function closePopup(somePopup) {
@@ -130,26 +89,32 @@ const closeOnOverlay = () => {
 closeOnOverlay();
 //закрытие всех popup при клике на overlay
 
-const closeOnEsc = (evt) => {
+export const closeOnEsc = (evt) => {
      if (evt.key === 'Escape') {
       const currentPopup = document.querySelector('.popup_on');
       closePopup(currentPopup);
+      document.removeEventListener('keydown', closeOnEsc);
      }
 }
 //закрытие всех popup при нажатии ESC
 
 function submitPlaceForm (evt) {
   evt.preventDefault();
-  const name = placeInput.value;
-  const link = imageInput.value;
 
-  renderCard(name, link);
+  const placeData = {};
+  placeData.name = placeInput.value;
+  placeData.link = imageInput.value;
+  const card = new Card(placeData);
+  const CardElement = card.generateCard();
+  placeCardContainer.prepend(CardElement);
+//рендеринг карточки на сайт
   closePopup(popupAddPlace)
   placeInput.value = "";
   imageInput.value = "";
-
+//очистка полей
   submitPlaceButton.classList.add('popup__container-form-submit-button_disabled');
   submitPlaceButton.disabled = true;
+//дизабл для кнопки в форме
 };
 //функция подтверждения формы user + сброс ошибок и значений по умолчанию при повторном открытии
 
@@ -165,5 +130,37 @@ placeForm.addEventListener('submit', submitPlaceForm);
 
 
 
+/* function createCard(name, link) {
+  const cardOnPage = placeCardTemplate.querySelector('.photo-grid__item').cloneNode(true);
+  const deleteButton = cardOnPage.querySelector('.photo-grid__card-delete');
+  const cardImage = cardOnPage.querySelector('.photo-grid__card-image');
+ const cardTitle = cardOnPage.querySelector('.photo-grid__card-title');
+  //при выносе этих переменных в ГОВ, рендерится только одна карточка, код перестаёт работать
+
+  cardTitle.textContent = name;
+  cardImage.alt = name;
+  cardImage.src = link;
+
+  cardImage.addEventListener('click', function (evt) {
+    openPopup(popupGallery);
+    galleryImage.src = link;
+    galleryImage.alt = name;
+    galleryDescription.textContent = name;
+  })
+
+  cardOnPage.querySelector('.photo-grid__like-button').addEventListener('click', function (evt) {
+  evt.target.classList.toggle('photo-grid__like-button_active');})
+
+  deleteButton.addEventListener('click', function () {
+    const cardItem = deleteButton.closest('.photo-grid__item');
+    cardItem.remove();
+  })
+
+  return cardOnPage }
+  //функция создания карточки+слушатели(лайк, удаление, открытие галлереи) */
 
 
+/*initialCards.forEach(function (cardItem) {
+  renderCard(cardItem.name, cardItem.link);
+});*/
+//загрузка из "коробки"
