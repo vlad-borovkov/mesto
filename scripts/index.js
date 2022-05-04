@@ -1,9 +1,11 @@
-import { Card } from "./Card.js";
-import { validConfig, FormValidator } from "./FormValidator.js";
+
+import { validConfig, FormValidator } from './FormValidator.js';
+import { initialCards } from './Constants.js';
+import { Card } from './Card.js';
 
 const popupUser = document.querySelector('.popup_type_user');
 const popupAddPlace = document.querySelector('.popup_type_place');
-const popupGallery = document.querySelector('.popup_type_gallery');
+export const popupGallery = document.querySelector('.popup_type_gallery');
 //окна popup
 
 const popupUserOpenButton = document.querySelector('.profile__info-edit-button');
@@ -12,6 +14,11 @@ const popupUserCloseButton = document.querySelector('.popup__user-close-icone');
 const popupAddPlaceCloseButton = document.querySelector('.popup__place-close-icone');
 const popupGalleryClose = document.querySelector('.popup__gallery-close-icone');
 //кнопки открытия-закрытия popup
+
+
+export const galleryImage = document.querySelector('.popup__gallery-image');
+export const galleryDescription = document.querySelector('.popup__gallery-description');
+//элементы popup галлереи
 
 const userForm = document.querySelector('.popup__user-form');
 const placeForm = document.querySelector('.popup__place-form');
@@ -47,7 +54,7 @@ function errorUserReset() {
 };
 //сброс ошибки в input и span при повторном открытии окна USER
 
-function openPopup(somePopup) {
+export function openPopup(somePopup) {
   somePopup.classList.add('popup_on');
   document.addEventListener('keydown', closeOnEsc)
 };
@@ -85,7 +92,7 @@ const closeOnOverlay = () => {
 closeOnOverlay();
 //закрытие всех popup при клике на overlay
 
-export const closeOnEsc = (evt) => {
+const closeOnEsc = (evt) => {
      if (evt.key === 'Escape') {
       const currentPopup = document.querySelector('.popup_on');
       closePopup(currentPopup);
@@ -130,4 +137,17 @@ UserFormValidation.enableValidation()
 const PlaceFormValidation = new FormValidator(validConfig, placeForm);
 PlaceFormValidation.enableValidation()
 //запускаем валидацию форм
+
+
+function createCard(cardItem, cardSelector) {
+  const card = new Card(cardItem, cardSelector);
+  const cardElementOnPage = card.generateCard();
+
+  return cardElementOnPage
+}
+
+initialCards.forEach(function (cardItem) {
+  placeCardContainer.prepend(createCard(cardItem));
+});
+//функция рендеринга карточки и загрузка из коробки
 
