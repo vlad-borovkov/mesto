@@ -26,24 +26,26 @@
       <button class="profile__add-button" type="button"></button>
     </section>
 
-    <section class="photo-grid">
-      <template id="placeCard">
-      <div class="photo-grid__item">
-        <img class="photo-grid__card-image" src="//:0" alt=" ">
-        <button class="photo-grid__card-delete" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
-        <div class="photo-grid__card-description">
-          <h2 class="photo-grid__card-title"></h2>
-          <button class="photo-grid__like-button" type="button"></button>
+    <template id="placeCard">
+      <div class="card">
+        <img class="card__image" src="//:0" alt=" ">
+        <button class="card__delete-button" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button"></button>
         </div>
       </div>
-      </template>
+    </template>
+
+    <section class="photo-grid">
     </section>
       <div class="popup popup_type_user">
         <button class="popup__user-close-icone" type="button"></button>
         <div class="popup__container-form">
           <form class="popup__form popup__user-form" name="user-profile" novalidate>
             <h2 class="popup__container-form-title">Редактировать профиль</h2>
-            <input id="name-input" class="popup__container-form-input popup__container-form-input_user-name" type="text" name="firstname" placeholder="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+            <input id="name-input" class="popup__container-form-input popup__container-form-input_user-name" type="text"
+              name="firstname" placeholder="Жак-Ив Кусто" minlength="2" maxlength="40" required>
             <span class="name-input-error popup__error"></span>
             <input id="description-input" class="popup__container-form-input popup__container-form-input_user-description" type="text" name="description" placeholder="Исследователь океана" minlength="2" maxlength="200" required>
             <span class="description-input-error popup__error"></span>

@@ -1,4 +1,4 @@
-.photo-grid__like-button {
+.card__like-button {
   margin: 0;
   margin-right: 15px;
   width: 22px;
@@ -11,12 +11,12 @@
   padding: 0;
 }
 
-.photo-grid__like-button:hover {
+.card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
-.photo-grid__like-button:active {
+.card__like-button:active {
   opacity: 1;
   background-image: url(../../../images/Like_black.svg);
   background-repeat: no-repeat;

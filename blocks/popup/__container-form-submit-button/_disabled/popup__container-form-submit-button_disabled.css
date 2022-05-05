@@ -5,4 +5,9 @@
   background-color: white;
   color: #000000;
   opacity: 0.2;
+
+}
+.popup__container-form-submit-button_disabled:hover{
+  cursor: pointer;
+  background-color: white;
 }

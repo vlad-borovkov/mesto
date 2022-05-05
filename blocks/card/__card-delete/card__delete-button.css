@@ -1,4 +1,4 @@
-.photo-grid__card-delete {
+.card__delete-button {
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -10,7 +10,7 @@
   left: 86.5%;
 }
 
-.photo-grid__card-delete:hover {
+.card__delete-button:hover {
   opacity: 60%;
   cursor: pointer;
 }

@@ -1,4 +1,4 @@
-.photo-grid__card-description {
+.card__description {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
