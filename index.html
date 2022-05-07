@@ -1,35 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css">
-  <title>Mesto</title>
-</head>
-<body>
-  <div class="page">
-    <header class="header">
-        <img class="header__group-logo" src="images/logo.svg" alt="логотип сайта место">
-    </header>
-  <main>
-    <section class="profile">
-      <img class="profile__avatar" src="images/Avatar.jpg" alt="аватар автора блога">
-      <div class="profile__info">
-        <div class="profile__info-title">
-        <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-        <button class="profile__info-edit-button" type="button"></button>
-        </div>
-      <p class="profile__info-description">Исследователь океана</p>
-      </div>
-      <button class="profile__add-button" type="button"></button>
-    </section>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>Mesto</title>
+  </head>
+  <body>
     <template id="placeCard">
       <div class="card">
-        <img class="card__image" src="//:0" alt=" ">
-        <button class="card__delete-button" type="button" id="delete-button"><img src="images/Trash.svg" alt="удалить"></button>
+        <img class="card__image" src="//:0" alt=" " />
+        <button class="card__delete-button" type="button" id="delete-button">
+          <img src="images/Trash.svg" alt="удалить" />
+        </button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
@@ -37,49 +21,127 @@
       </div>
     </template>
 
-    <section class="photo-grid">
-    </section>
-      <div class="popup popup_type_user">
-        <button class="popup__user-close-icone" type="button"></button>
-        <div class="popup__container-form">
-          <form class="popup__form popup__user-form" name="user-profile" novalidate>
-            <h2 class="popup__container-form-title">Редактировать профиль</h2>
-            <input id="name-input" class="popup__container-form-input popup__container-form-input_user-name" type="text"
-              name="firstname" placeholder="Жак-Ив Кусто" minlength="2" maxlength="40" required>
-            <span class="name-input-error popup__error"></span>
-            <input id="description-input" class="popup__container-form-input popup__container-form-input_user-description" type="text" name="description" placeholder="Исследователь океана" minlength="2" maxlength="200" required>
-            <span class="description-input-error popup__error"></span>
-            <button class="popup__container-form-submit-button popup__container-form-submit-button_active" type="submit" value="Сохранить">Сохранить</button>
-          </form>
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__group-logo"
+          src="images/logo.svg"
+          alt="логотип сайта место"
+        />
+      </header>
+      <main>
+        <section class="profile">
+          <img
+            class="profile__avatar"
+            src="images/Avatar.jpg"
+            alt="аватар автора блога"
+          />
+          <div class="profile__info">
+            <div class="profile__info-title">
+              <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+              <button class="profile__info-edit-button" type="button"></button>
+            </div>
+            <p class="profile__info-description">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button" type="button"></button>
+        </section>
+
+        <section class="photo-grid"></section>
+        <div class="popup popup_type_user">
+          <button class="popup__user-close-icone" type="button"></button>
+          <div class="popup__container-form">
+            <form
+              class="popup__form popup__user-form"
+              name="user-profile"
+              novalidate
+            >
+              <h2 class="popup__container-form-title">Редактировать профиль</h2>
+              <input
+                id="name-input"
+                class="popup__container-form-input popup__container-form-input_user-name"
+                type="text"
+                name="firstname"
+                placeholder="Жак-Ив Кусто"
+                minlength="2"
+                maxlength="40"
+                required
+              />
+              <span class="name-input-error popup__error"></span>
+              <input
+                id="description-input"
+                class="popup__container-form-input popup__container-form-input_user-description"
+                type="text"
+                name="description"
+                placeholder="Исследователь океана"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="description-input-error popup__error"></span>
+              <button
+                class="popup__container-form-submit-button popup__container-form-submit-button_active"
+                type="submit"
+                value="Сохранить"
+              >
+                Сохранить
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="popup popup_type_place">
-        <button class="popup__place-close-icone" type="button"></button>
-        <div class="popup__container-form">
-          <form class="popup__form popup__place-form" name="user-location" novalidate>
-            <h2 class="popup__container-form-title">Новое место</h2>
-            <input id="location-input" class="popup__container-form-input popup__container-form-input_location" type="text" name="user-place" placeholder="Название" minlength="2" maxlength="30" required>
-            <span class="location-input-error popup__error"></span>
-            <input id="link-input" class="popup__container-form-input popup__container-form-input_link" name="link-image" placeholder="Ссылка на картинку" type="url" required>
-            <span class="link-input-error popup__error"></span>
-            <button class="popup__container-form-submit-button popup__container-form-submit-button_type_place" type="submit" value="Сохранить">Создать</button>
-          </form>
+        <div class="popup popup_type_place">
+          <button class="popup__place-close-icone" type="button"></button>
+          <div class="popup__container-form">
+            <form
+              class="popup__form popup__place-form"
+              name="user-location"
+              novalidate
+            >
+              <h2 class="popup__container-form-title">Новое место</h2>
+              <input
+                id="location-input"
+                class="popup__container-form-input popup__container-form-input_location"
+                type="text"
+                name="user-place"
+                placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span class="location-input-error popup__error"></span>
+              <input
+                id="link-input"
+                class="popup__container-form-input popup__container-form-input_link"
+                name="link-image"
+                placeholder="Ссылка на картинку"
+                type="url"
+                required
+              />
+              <span class="link-input-error popup__error"></span>
+              <button
+                class="popup__container-form-submit-button popup__container-form-submit-button_type_place"
+                type="submit"
+                value="Сохранить"
+              >
+                Создать
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="popup popup_type_gallery">
-        <div class="popup__gallery-container">
-          <button class="popup__gallery-close-icone" type="button"></button>
-          <img class="popup__gallery-image" src="//:0" alt="">
-          <p class="popup__gallery-description"></p>
+        <div class="popup popup_type_gallery">
+          <div class="popup__gallery-container">
+            <button class="popup__gallery-close-icone" type="button"></button>
+            <img class="popup__gallery-image" src="//:0" alt="" />
+            <p class="popup__gallery-description"></p>
+          </div>
         </div>
-      </div>
-    </main>
-  <footer class="footer">
-    <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
-  </footer>
-  </div>
-  <script type="module" src="scripts/index.js"></script>
-  <script type="module" src="scripts/FormValidator.js"></script>
-  <script type="module" src="scripts/Card.js"></script>
-</body>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+      </footer>
+    </div>
+    <script type="module" src="scripts/utils.js"></script>
+    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/FormValidator.js"></script>
+    <script type="module" src="scripts/Card.js"></script>
+  </body>
 </html>

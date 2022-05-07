@@ -1,11 +1,11 @@
 import { FormValidator } from "./FormValidator.js";
-import { validConfig } from "./Constants.js";
-import { initialCards } from "./Constants.js";
+import { validConfig } from "./constants.js";
+import { initialCards } from "./constants.js";
 import { Card } from "./Card.js";
 
-export const popupUser = document.querySelector(".popup_type_user");
+const popupUser = document.querySelector(".popup_type_user");
 const popupAddPlace = document.querySelector(".popup_type_place");
-export const popupGallery = document.querySelector(".popup_type_gallery");
+const popupGallery = document.querySelector(".popup_type_gallery");
 //окна popup
 
 const popupUserOpenButton = document.querySelector(
@@ -18,12 +18,6 @@ const popupAddPlaceCloseButton = document.querySelector(
 );
 const popupGalleryClose = document.querySelector(".popup__gallery-close-icone");
 //кнопки открытия-закрытия popup
-
-export const galleryImage = document.querySelector(".popup__gallery-image");
-export const galleryDescription = document.querySelector(
-  ".popup__gallery-description"
-);
-//элементы popup галлереи
 
 const userForm = document.querySelector(".popup__user-form");
 const placeForm = document.querySelector(".popup__place-form");
@@ -51,19 +45,25 @@ const imageInput = document.querySelector(".popup__container-form-input_link");
 const placeCardContainer = document.querySelector(".photo-grid");
 //разметка для вставки карточки
 
+const userFormValidation = new FormValidator(validConfig, userForm);
+userFormValidation.enableValidation();
+
+const placeFormValidation = new FormValidator(validConfig, placeForm);
+placeFormValidation.enableValidation();
+//запускаем валидацию форм
+
 function setDefaultUserValue(name, description) {
   name.value = nameOutput.textContent;
   description.value = descriptionOutput.textContent;
 }
 //присвоение базовых значение для popup user
 
-export function openPopup(somePopup) {
+function openPopup(somePopup) {
   somePopup.classList.add("popup_on");
   document.addEventListener("keydown", handleCloseOnEsc);
 }
 popupUserOpenButton.addEventListener("click", () => {
-  const resetError = new FormValidator(validConfig, userForm);
-  resetError.resetAllError();
+  userFormValidation.resetAllError();
   setDefaultUserValue(nameInput, descriptionInput);
   openPopup(popupUser);
 });
@@ -109,20 +109,24 @@ const handleCloseOnEsc = (evt) => {
 };
 //закрытие всех popup при нажатии ESC
 
+const renderCard = (cardItem) => {
+  placeCardContainer.prepend(createCard(cardItem));
+};
+
 function submitPlaceForm() {
   const placeData = {};
 
   placeData.name = placeInput.value;
   placeData.link = imageInput.value;
 
-  placeCardContainer.prepend(createCard(placeData, placeForm));
+  renderCard(placeData, placeForm);
+
   //рендеринг карточки на сайт
   closePopup(popupAddPlace);
   placeInput.value = "";
   imageInput.value = "";
   //очистка полей формы
-  const buttonForDisabled = new FormValidator(validConfig, placeForm);
-  buttonForDisabled.disabledSubmitButton();
+  placeFormValidation.disabledSubmitButton();
 }
 //функция подтверждения формы Place + сброс ошибок и значений по умолчанию при повторном открытии
 
@@ -135,13 +139,6 @@ userForm.addEventListener("submit", submitUserForm);
 placeForm.addEventListener("submit", submitPlaceForm);
 //функции подтверждения форм user и place + слушатели
 
-const userFormValidation = new FormValidator(validConfig, userForm);
-userFormValidation.enableValidation();
-
-const placeFormValidation = new FormValidator(validConfig, placeForm);
-placeFormValidation.enableValidation();
-//запускаем валидацию форм
-
 function createCard(cardItem, cardSelector) {
   const card = new Card(cardItem, cardSelector);
   const cardElementOnPage = card.generateCard();
@@ -150,6 +147,6 @@ function createCard(cardItem, cardSelector) {
 }
 //функция рендеринга карточки
 initialCards.forEach(function (cardItem) {
-  placeCardContainer.prepend(createCard(cardItem));
+  renderCard(cardItem);
 });
 // загрузка из коробки

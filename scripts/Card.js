@@ -2,24 +2,15 @@ import {
   openPopup,
   popupGallery,
   galleryImage,
-  galleryDescription,
-} from "./index.js";
+  galleryDescription
+} from "./utils.js"
 
 export class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._elementCard = this._getTemplateCard();
-    this._likeButton = this._elementCard.querySelector(
-      ".card__like-button"
-    );
-    this._cardImage = this._elementCard.querySelector(
-      ".card__image"
-    );
-    this._cardTitle = this._elementCard.querySelector(
-      ".card__title"
-    );
+
   }
 
   _getTemplateCard() {
@@ -32,6 +23,17 @@ export class Card {
   }
   //получение шаблона карточки
   generateCard() {
+    this._elementCard = this._getTemplateCard();
+    this._likeButton = this._elementCard.querySelector(
+      ".card__like-button"
+    );
+    this._cardImage = this._elementCard.querySelector(
+      ".card__image"
+    );
+    this._cardTitle = this._elementCard.querySelector(
+      ".card__title"
+    );
+
     this._cardImage.alt = this._name;
     this._cardImage.src = this._link;
     this._cardTitle.textContent = this._name;
@@ -57,19 +59,22 @@ export class Card {
     // открываем галерею
   }
   _deleteCard() {
-    this._element = null;
+
     this._elementCard.remove();
+    this._elementCard = null;
   }
   _switchLike() {
+    this._elementCard = this._getTemplateCard();
     this._likeButton.classList.toggle("card__like-button_active");
   }
 
   _openPopupGallery() {
-    openPopup(popupGallery);
 
     galleryImage.src = this._link;
     galleryImage.alt = this._name;
     galleryDescription.textContent = this._name;
+
+    openPopup(popupGallery);
   }
   //открой галлерею+слушай нажатие ESC для закрытия
 }

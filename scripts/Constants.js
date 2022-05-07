@@ -33,5 +33,6 @@ export const validConfig = {
   inactiveButtonClass: "popup__container-form-submit-button_disabled",
   inputErrorClass: "popup__container-form-input_type_error",
   errorClass: "popup__error_visible",
+  commonErrorClass: ".popup__error",
 };
 // конфиг валидации
