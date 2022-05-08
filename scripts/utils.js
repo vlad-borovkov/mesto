@@ -5,11 +5,12 @@ const handleCloseOnEsc = (evt) => {
   }
 };
 //закрытие всех popup при нажатии ESC
+
 export function openPopup(somePopup) {
   somePopup.classList.add("popup_on");
   document.addEventListener("keydown", handleCloseOnEsc);
 }
-function closePopup(somePopup) {
+export function closePopup(somePopup) {
   somePopup.classList.remove("popup_on");
   document.removeEventListener("keydown", handleCloseOnEsc);
 }

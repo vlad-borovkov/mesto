@@ -2,6 +2,7 @@ import { FormValidator } from "./FormValidator.js";
 import { validConfig } from "./constants.js";
 import { initialCards } from "./constants.js";
 import { Card } from "./Card.js";
+import { openPopup, closePopup } from "./utils.js";
 
 const popupUser = document.querySelector(".popup_type_user");
 const popupAddPlace = document.querySelector(".popup_type_place");
@@ -22,11 +23,6 @@ const popupGalleryClose = document.querySelector(".popup__gallery-close-icone");
 const userForm = document.querySelector(".popup__user-form");
 const placeForm = document.querySelector(".popup__place-form");
 //формы
-
-const buttonSubmitPlace = document.querySelector(
-  ".popup__container-form-submit-button_type_place"
-);
-//кнопка формы Place
 
 const nameInput = document.querySelector(
   ".popup__container-form-input_user-name"
@@ -58,10 +54,6 @@ function setDefaultUserValue(name, description) {
 }
 //присвоение базовых значение для popup user
 
-function openPopup(somePopup) {
-  somePopup.classList.add("popup_on");
-  document.addEventListener("keydown", handleCloseOnEsc);
-}
 popupUserOpenButton.addEventListener("click", () => {
   userFormValidation.resetAllError();
   setDefaultUserValue(nameInput, descriptionInput);
@@ -72,10 +64,6 @@ popupPlaceOpenButton.addEventListener("click", (event) =>
 );
 //функция открытия ВСЕХ popup + слушатели открытия
 
-function closePopup(somePopup) {
-  somePopup.classList.remove("popup_on");
-  document.removeEventListener("keydown", handleCloseOnEsc);
-}
 popupUserCloseButton.addEventListener("click", (event) => {
   closePopup(popupUser);
 });
@@ -85,7 +73,7 @@ popupAddPlaceCloseButton.addEventListener("click", (event) =>
 popupGalleryClose.addEventListener("click", (event) =>
   closePopup(popupGallery)
 );
-//функция закрытия ВСЕХ popup + слушатели
+// закрытие ВСЕХ popup + навешиваем слушатели
 
 const closeOnOverlay = () => {
   const popupList = Array.from(document.querySelectorAll(".popup"));
@@ -101,14 +89,6 @@ const closeOnOverlay = () => {
 closeOnOverlay();
 //закрытие всех popup при клике на overlay
 
-const handleCloseOnEsc = (evt) => {
-  if (evt.key === "Escape") {
-    const currentPopup = document.querySelector(".popup_on");
-    closePopup(currentPopup);
-  }
-};
-//закрытие всех popup при нажатии ESC
-
 const renderCard = (cardItem) => {
   placeCardContainer.prepend(createCard(cardItem));
 };
@@ -119,7 +99,7 @@ function submitPlaceForm() {
   placeData.name = placeInput.value;
   placeData.link = imageInput.value;
 
-  renderCard(placeData, placeForm);
+  renderCard(placeData);
 
   //рендеринг карточки на сайт
   closePopup(popupAddPlace);
@@ -146,7 +126,6 @@ function createCard(cardItem, cardSelector) {
   return cardElementOnPage;
 }
 //функция рендеринга карточки
-initialCards.forEach(function (cardItem) {
-  renderCard(cardItem);
-});
+
+initialCards.forEach(renderCard);
 // загрузка из коробки
