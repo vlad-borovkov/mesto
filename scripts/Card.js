@@ -12,7 +12,6 @@ export class Card {
     this._cardSelector = cardSelector;
 
   }
-
   _getTemplateCard() {
     const placeCardTemplate = document
       .querySelector("#placeCard")
@@ -24,6 +23,9 @@ export class Card {
   //получение шаблона карточки
   generateCard() {
     this._elementCard = this._getTemplateCard();
+    this._deleteButton = this._elementCard.querySelector(
+      ".card__delete-button"
+    );
     this._likeButton = this._elementCard.querySelector(
       ".card__like-button"
     );
@@ -45,31 +47,24 @@ export class Card {
   //создание карточки, присваивание значений, навешивание слушателей
 
   _setEventListeners() {
-    this._elementCard
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => this._deleteCard());
-    // удаляю карточку
-    this._elementCard
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => this._switchLike());
+    this._likeButton
+    .addEventListener("click", () => this._switchLike());
     // ставим лайк
-    this._elementCard
-      .querySelector(".card__image")
-      .addEventListener("click", () => this._openPopupGallery());
+    this._cardImage
+    .addEventListener("click", () => this._openPopupGallery());
     // открываем галерею
+    this._deleteButton
+    .addEventListener("click", () => this._deleteCard());
+  // удаляю карточку
+  }
+  _switchLike() {
+    this._likeButton.classList.toggle("card__like-button_active");
   }
   _deleteCard() {
-
     this._elementCard.remove();
     this._elementCard = null;
   }
-  _switchLike() {
-    this._elementCard = this._getTemplateCard();
-    this._likeButton.classList.toggle("card__like-button_active");
-  }
-
   _openPopupGallery() {
-
     galleryImage.src = this._link;
     galleryImage.alt = this._name;
     galleryDescription.textContent = this._name;
