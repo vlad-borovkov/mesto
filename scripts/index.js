@@ -38,6 +38,8 @@ const placeInput = document.querySelector(
 const imageInput = document.querySelector(".popup__container-form-input_link");
 //поля для ввода-вывода даты
 
+const cardTemplate = document.querySelector("#placeCard");
+
 const placeCardContainer = document.querySelector(".photo-grid");
 //разметка для вставки карточки
 
@@ -89,8 +91,8 @@ const closeOnOverlay = () => {
 closeOnOverlay();
 //закрытие всех popup при клике на overlay
 
-const renderCard = (cardItem) => {
-  placeCardContainer.prepend(createCard(cardItem));
+const renderCard = (cardItem, cardSelector) => {
+  placeCardContainer.prepend(createCard(cardItem, cardTemplate));
 };
 
 function submitPlaceForm() {
