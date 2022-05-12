@@ -10,11 +10,10 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._templateCard = this._cardSelector;
 
   }
   _getTemplateCard() {
-    const placeCardTemplate = this._templateCard
+    const placeCardTemplate = document.querySelector(this._cardSelector)
     .content.querySelector(".card").cloneNode(true);
 
     return placeCardTemplate;
