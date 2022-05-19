@@ -34,7 +34,7 @@
         </section>
         <section class="photo-grid"></section>
         <div class="popup popup_type_user">
-          <button class="popup__user-close-icone" type="button"></button>
+          <button class="popup__user-close-icone popup__close-icone" type="button"></button>
           <div class="popup__container-form">
             <form
               class="popup__form popup__user-form"
@@ -75,7 +75,7 @@
           </div>
         </div>
         <div class="popup popup_type_place">
-          <button class="popup__place-close-icone" type="button"></button>
+          <button class="popup__place-close-icone popup__close-icone" type="button"></button>
           <div class="popup__container-form">
             <form
               class="popup__form popup__place-form"
@@ -87,7 +87,7 @@
                 id="location-input"
                 class="popup__container-form-input popup__container-form-input_location"
                 type="text"
-                name="user-place"
+                name="user_place"
                 placeholder="Название"
                 minlength="2"
                 maxlength="30"
@@ -97,7 +97,7 @@
               <input
                 id="link-input"
                 class="popup__container-form-input popup__container-form-input_link"
-                name="link-image"
+                name="link_place"
                 placeholder="Ссылка на картинку"
                 type="url"
                 required
@@ -115,7 +115,7 @@
         </div>
         <div class="popup popup_type_gallery">
           <div class="popup__gallery-container">
-            <button class="popup__gallery-close-icone" type="button"></button>
+            <button class="popup__gallery-close-icone popup__close-icone" type="button"></button>
             <img class="popup__gallery-image" src="//:0" alt="" />
             <p class="popup__gallery-description"></p>
           </div>
@@ -137,10 +137,10 @@
         </div>
       </div>
     </template>
-    <script type="module" src="scripts/constants.js"></script>
-    <script type="module" src="scripts/FormValidator.js"></script>
-    <script type="module" src="scripts/Card.js"></script>
-    <script type="module" src="scripts/utils.js"></script>
-    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="/scripts/utils/constants.js"></script>
+    <script type="module" src="/scripts/components/FormValidator.js"></script>
+    <script type="module" src="/scripts/components/Card.js"></script>
+    <script type="module" src="/scripts/utils/utils.js"></script>
+    <script type="module" src="/scripts/pages/index.js"></script>
   </body>
 </html>

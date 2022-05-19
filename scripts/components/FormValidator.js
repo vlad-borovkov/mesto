@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(config, selectorForm) {
     this._formElement = selectorForm;
     this._commonErrorClass = config.commonErrorClass;
@@ -19,7 +19,6 @@ export class FormValidator {
   }
 
   enableValidation() {
-
     this._formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
@@ -41,10 +40,7 @@ export class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(
-        inputElement,
-        inputElement.validationMessage
-      );
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
@@ -71,7 +67,7 @@ export class FormValidator {
   }
 
   _toggleButtonState() {
-    this.disabledSubmitButton()
+    this.disabledSubmitButton();
     if (this._hasInvalidInput(this._inputList)) {
       this._buttonElement.classList.add(`${this._inactiveButtonClass}`);
       this._buttonElement.disabled = true;
@@ -86,9 +82,8 @@ export class FormValidator {
       return !inputElement.validity.valid;
     });
   }
-
+ //сброс ошибки в input и span при повторном открытии окна USER
   resetAllError() {
-
     this._inputList.forEach((inputElement) => {
       inputElement.classList.remove("popup__container-form-input_type_error");
     });
@@ -96,15 +91,11 @@ export class FormValidator {
     this._errorList.forEach((errorElement) => {
       errorElement.innerText = "";
     });
-    }
-    //сброс ошибки в input и span при повторном открытии окна USER
-
-  disabledSubmitButton() {
-    this._buttonElement.classList.add(
-      this._inactiveButtonClass
-    );
-    this._buttonElement.disabled = true;
-    //дизабл для кнопки в форме
   }
+//дизабл для кнопки в форме
+  disabledSubmitButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
 
+  }
 }
