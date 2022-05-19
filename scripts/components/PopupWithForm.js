@@ -27,10 +27,10 @@ export default class PopupWithForm extends Popup {
 
   close(){
     super.close()
+    //очистка полей формы
     this._inputList.forEach(input => {
       input.value = "";
     })
-    //очистка полей формы
   }
 }
 
