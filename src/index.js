@@ -1,3 +1,5 @@
+import "./styles/index.css"; // добавьте импорт главного файла стилей
+
 import {
   validConfig,
   initialCards,
@@ -9,15 +11,15 @@ import {
   popupPlaceOpenButton,
   userForm,
   placeForm,
-} from "../utils/constants.js";
+} from "./utils/constants.js";
 
-import FormValidator from "../components/FormValidator.js";
-import Card from "../components/Card.js";
-import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
+import FormValidator from "./components/FormValidator.js";
+import Card from "./components/Card.js";
+import Section from "./components/Section.js";
+import Popup from "./components/Popup.js";
+import PopupWithImage from "./components/PopupWithImage.js";
+import PopupWithForm from "./components/PopupWithForm.js";
+import UserInfo from "./components/UserInfo.js";
 
 //поля для ввода информации о пользователе
 const nameInput = document.querySelector(
@@ -88,7 +90,7 @@ const cardList = new Section(
         });
         openCloseGalleryPopup.open();
       });
-      
+
       const cardElement = card.generateCard();
       cardList.addItem(cardElement);
     },

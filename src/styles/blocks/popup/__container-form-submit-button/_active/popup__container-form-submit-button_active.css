@@ -1,9 +1,9 @@
 .popup__container-form-submit-button {
-  cursor: url(../../../../images/Cursor_1.svg), pointer;
+  cursor: url(./../../../../../images/Cursor_1.svg), pointer;
   background-color: rgba(0, 0, 0);
 }
 
 .popup__container-form-submit-button:hover{
-  cursor: url(../../../../images/Cursor_1.svg), pointer;
+  cursor: url(./../../../../../images/Cursor_1.svg), pointer;
   background-color: rgba(0, 0, 0, 0.8);
 }

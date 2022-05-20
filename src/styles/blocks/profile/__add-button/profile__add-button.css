@@ -5,7 +5,7 @@
   margin-left: auto;
   border-radius: 2px;
   background-color: transparent;
-  background-image: url(../../../images/Add_Button_descktop.svg);
+  background-image: url(./../../../../images/Add_Button_descktop.svg);
   background-repeat: no-repeat;
   object-fit: cover;
   border: 2px;
@@ -25,7 +25,7 @@
 
 @media screen and (max-width: 660px) and (min-width: 320px)   {
   .profile__add-button {
-    background-image: url(../../../images/Add_Button_mobile.svg);
+    background-image: url(./../../../../images/Add_Button_mobile.svg);
     margin: 0;
     width: 282px;
     height: 50px;

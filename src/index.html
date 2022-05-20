@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="pages/index.css" />
     <title>Mesto</title>
   </head>
   <body>
@@ -12,7 +11,7 @@
       <header class="header">
         <img
           class="header__group-logo"
-          src="images/logo.svg"
+          src="<%=require('./images/logo.svg')%>"
           alt="логотип сайта место"
         />
       </header>
@@ -20,7 +19,7 @@
         <section class="profile">
           <img
             class="profile__avatar"
-            src="images/Avatar.jpg"
+            src="<%=require('./images/Avatar.jpg')%>"
             alt="аватар автора блога"
           />
           <div class="profile__info">
@@ -129,7 +128,7 @@
       <div class="card">
         <img class="card__image" src="//:0" alt=" " />
         <button class="card__delete-button" type="button" id="delete-button">
-          <img src="images/Trash.svg" alt="удалить" />
+          <img src="<%=require('./images/Trash.svg')%>" alt="удалить" />
         </button>
         <div class="card__description">
           <h2 class="card__title"></h2>
@@ -137,10 +136,5 @@
         </div>
       </div>
     </template>
-    <script type="module" src="/scripts/utils/constants.js"></script>
-    <script type="module" src="/scripts/components/FormValidator.js"></script>
-    <script type="module" src="/scripts/components/Card.js"></script>
-    <script type="module" src="/scripts/utils/utils.js"></script>
-    <script type="module" src="/scripts/pages/index.js"></script>
   </body>
 </html>

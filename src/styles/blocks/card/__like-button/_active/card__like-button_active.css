@@ -1,6 +1,6 @@
 .card__like-button_active {
   background-color: transparent;
-  background-image: url(../../../../images/Like_black.svg);
+  background-image: url(./../../../../../images/Like_black.svg);
   background-repeat: no-repeat;
   object-fit: cover;
 }
