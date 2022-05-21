@@ -41,10 +41,9 @@ placeFormValidation.enableValidation();
 //открываем-закрываем окно добавления фото-карточки
 const openClosePlacePopup = new PopupWithForm(popupAddPlace, {});
 popupPlaceOpenButton.addEventListener("click", () => {
-  placeFormValidation.resetAllError()
-  openClosePlacePopup.open()
-  }
-);
+  placeFormValidation.resetAllError();
+  openClosePlacePopup.open();
+});
 
 //получаем текущую информацию о пользователея для вывода на дисплей, открываем-закрываем popupUser
 const openCloseUserPopup = new PopupWithForm(popupUser, {});
@@ -52,9 +51,8 @@ const openCloseUserPopup = new PopupWithForm(popupUser, {});
 const userInfo = new UserInfo({});
 userInfo.getUserInfo();
 
-
 popupUserOpenButton.addEventListener("click", () => {
-  userFormValidation.resetAllError()
+  userFormValidation.resetAllError();
 
   const currentUserInfo = userInfo.getUserInfo();
   nameInput.value = currentUserInfo.firstname;
@@ -76,43 +74,34 @@ const popupWithUserInfo = new PopupWithForm(popupUser, {
 });
 popupWithUserInfo.setEventListeners();
 
-const openCloseGalleryPopup = new PopupWithImage(popupGallery)
+const openCloseGalleryPopup = new PopupWithImage(popupGallery);
+
+//универсальная функция возвращения карточки после ручного нажатия
+const returnClickCard = (data) => {
+  const card = new Card(data, cardSelector, (clickValue) => {
+    const cardValue = {
+      name: clickValue.alt,
+      link: clickValue.src,
+    };
+    openCloseGalleryPopup.open(cardValue);
+    openCloseGalleryPopup.setEventListeners();
+  });
+  const cardElement = card.generateCard();
+  return cardElement;
+};
 
 //автоматическая загрузка карточек по умолчанию + вывод авто-карточек в popupGallery при handleClick
 const cardList = new Section(
   {
     data: initialCards,
     renderer: (item) => {
-      const card = new Card(item, cardSelector, (clickValue) => {
-        const cardValue = {
-          name: clickValue.alt,
-          link: clickValue.src,
-        };
-        openCloseGalleryPopup.open(cardValue);
-        openCloseGalleryPopup.setEventListeners();
-      });
-
-      const cardElement = card.generateCard();
+      const cardElement = returnClickCard(item);
       cardList.addItem(cardElement);
     },
   },
   cardsContainer
 );
 cardList.renderItems();
-
-const returnClickCard = (clickValue) => {
-  const card = new Card (item, cardSelector, (clickValue) => {
-    const cardValue = {
-      name: clickValue.alt,
-      link: clickValue.src,
-    };
-    const returnedCard = card.generateCard()
-    return returnedCard
-  })
-}
-
-
-
 
 //ручное добавление карточек + disable для кнопки submit при повторном открытии формы +
 //открытие popupGallery при handleClick
@@ -123,18 +112,9 @@ const popupWithFormPlace = new PopupWithForm(popupAddPlace, {
       link: formData.link_place,
     };
     placeFormValidation.disabledSubmitButton();
-
-    const handleAddCard = new Card(inputValue, cardSelector, (clickValue) => {
-      const cardValue = {
-        name: clickValue.alt,
-        link: clickValue.src,
-      };
-      openCloseGalleryPopup.open(cardValue);
-      openCloseGalleryPopup.setEventListeners();
-    });
-    const cardElement = handleAddCard.generateCard();
+    const cardElement = returnClickCard(inputValue);
     cardList.addItem(cardElement);
   },
 });
-popupWithFormPlace.setEventListeners();
 
+popupWithFormPlace.setEventListeners();
