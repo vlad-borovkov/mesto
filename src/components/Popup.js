@@ -16,7 +16,6 @@ export default class Popup {
   open() {
     this._popupSelector.classList.add("popup_on");
     document.addEventListener("keydown", this._handleCloseOnEsc);
-    this.setEventListeners();
   }
 
   close() {
@@ -26,13 +25,13 @@ export default class Popup {
 
   _closeOnOverlay = (event) => {
     if (event.target.classList.contains("popup")) {
-      this.close(this._visiblePopup);
+      this.close();
     }
   };
 
   _handleCloseOnEsc(event) {
     if (event.key === "Escape") {
-      this.close(this._visiblePopup);
+      this.close();
     }
   }
 }

@@ -2,16 +2,15 @@ import Popup from "./Popup.js";
 import { galleryImage, galleryDescription } from "../utils/constants.js";
 
 export default class PopupWithImage extends Popup {
-  constructor({ popupSelector, clickCardValue }) {
+  constructor(popupSelector) {
     super(popupSelector);
-    this._link = clickCardValue.link;
-    this._name = clickCardValue.name;
   }
 
-  open() {
-    galleryImage.src = this._link;
-    galleryImage.alt = this._name;
-    galleryDescription.textContent = this._name;
+  open(clickCardValue) {
+
+    galleryImage.src = clickCardValue.link;
+    galleryImage.alt = clickCardValue.name;
+    galleryDescription.textContent = clickCardValue.name;
 
     super.open();
   }

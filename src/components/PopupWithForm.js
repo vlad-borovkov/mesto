@@ -1,7 +1,7 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor({popupSelector, handlerSubmitForm}) {
+  constructor(popupSelector, {handlerSubmitForm}) {
     super(popupSelector);
     this._formElement = this._popupSelector.querySelector(".popup__form");
     this._handlerSubmitForm = handlerSubmitForm;
@@ -27,10 +27,8 @@ export default class PopupWithForm extends Popup {
 
   close(){
     super.close()
+    this._formElement.reset()
     //очистка полей формы
-    this._inputList.forEach(input => {
-      input.value = "";
-    })
   }
 }
 
