@@ -1,4 +1,4 @@
-import "./../styles/index.css"; // добавьте импорт главного файла стилей
+import "./index.css"; // добавьте импорт главного файла стилей
 
 import {
   validConfig,
@@ -11,7 +11,10 @@ import {
   popupPlaceOpenButton,
   userForm,
   placeForm,
+  nameOutput,
+  descriptionOutput
 } from "./../utils/constants.js";
+
 
 import FormValidator from "./../components/FormValidator.js";
 import Card from "./../components/Card.js";
@@ -31,30 +34,22 @@ const descriptionInput = document.querySelector(
 // шаблон-селектор фото-карточки
 const cardSelector = "#placeCard";
 
-//запускаем валидацию форм
+//запускаем валидацию форм User и Place
 const userFormValidation = new FormValidator(validConfig, userForm);
 userFormValidation.enableValidation();
 
 const placeFormValidation = new FormValidator(validConfig, placeForm);
 placeFormValidation.enableValidation();
 
-//открываем-закрываем окно добавления фото-карточки
-const openClosePlacePopup = new PopupWithForm(popupAddPlace, {});
-popupPlaceOpenButton.addEventListener("click", () => {
-  placeFormValidation.resetAllError();
-  openClosePlacePopup.open();
-});
-
-//получаем текущую информацию о пользователея для вывода на дисплей, открываем-закрываем popupUser
+//открываем-закрываем popupUser, получаем текущую информацию о пользователея для вывода на дисплей,
 const openCloseUserPopup = new PopupWithForm(popupUser, {});
-
-const userInfo = new UserInfo({});
-userInfo.getUserInfo();
+const userInfo = new UserInfo({ firstname: nameOutput, description: descriptionOutput });
 
 popupUserOpenButton.addEventListener("click", () => {
   userFormValidation.resetAllError();
 
   const currentUserInfo = userInfo.getUserInfo();
+
   nameInput.value = currentUserInfo.firstname;
   descriptionInput.value = currentUserInfo.description;
 
@@ -68,13 +63,21 @@ const popupWithUserInfo = new PopupWithForm(popupUser, {
       firstname: formData.firstname,
       description: formData.description,
     };
-    const setInfo = new UserInfo(userValue);
-    setInfo.setUserInfo();
+    userInfo.setUserInfo(userValue)
   },
 });
 popupWithUserInfo.setEventListeners();
 
+//открываем-закрываем окно добавления фото-карточки
+const openClosePlacePopup = new PopupWithForm(popupAddPlace, {});
+popupPlaceOpenButton.addEventListener("click", () => {
+  placeFormValidation.resetAllError();
+  openClosePlacePopup.open();
+});
+
+//открываем-закрываем галлерею
 const openCloseGalleryPopup = new PopupWithImage(popupGallery);
+openCloseGalleryPopup.setEventListeners();
 
 //универсальная функция возвращения карточки после ручного нажатия
 const returnClickCard = (data) => {
@@ -84,7 +87,6 @@ const returnClickCard = (data) => {
       link: clickValue.src,
     };
     openCloseGalleryPopup.open(cardValue);
-    openCloseGalleryPopup.setEventListeners();
   });
   const cardElement = card.generateCard();
   return cardElement;
