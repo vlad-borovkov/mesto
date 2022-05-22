@@ -1,9 +1,7 @@
-
-
 export default class UserInfo {
   constructor({ firstname, description }) {
-    this._userNameInterface = firstname;
-    this._userDescriptionInterface = description;
+    this._userNameInterface = document.querySelector(firstname);
+    this._userDescriptionInterface = document.querySelector(description);
   }
 
   getUserInfo() {

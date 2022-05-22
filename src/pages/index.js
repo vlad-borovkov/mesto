@@ -11,8 +11,6 @@ import {
   popupPlaceOpenButton,
   userForm,
   placeForm,
-  nameOutput,
-  descriptionOutput
 } from "./../utils/constants.js";
 
 
@@ -43,7 +41,7 @@ placeFormValidation.enableValidation();
 
 //открываем-закрываем popupUser, получаем текущую информацию о пользователея для вывода на дисплей,
 const openCloseUserPopup = new PopupWithForm(popupUser, {});
-const userInfo = new UserInfo({ firstname: nameOutput, description: descriptionOutput });
+const userInfo = new UserInfo({ firstname: ".profile__info-name", description: ".profile__info-description" });
 
 popupUserOpenButton.addEventListener("click", () => {
   userFormValidation.resetAllError();
