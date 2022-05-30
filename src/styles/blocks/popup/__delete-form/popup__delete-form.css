@@ -1,0 +1,10 @@
+.popup__delete-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 580px) and (min-width: 320px)   {
+    .popup__user-form {
+      align-items: center;
+    }
+  }

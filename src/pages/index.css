@@ -33,12 +33,14 @@
 @import url(./../styles/blocks/popup/_type/_user/popup_type_user.css);
 @import url(./../styles/blocks/popup/_type/_place/popup_type_place.css);
 @import url(./../styles/blocks/popup/_type/_gallery/popup_type_gallery.css);
+@import url(./../styles/blocks/popup/_type/_delete/popup_type_delete.css);
 @import url(./../styles/blocks/popup/_on/popup_on.css);
 
 
 @import url(./../styles/blocks/popup/__place-close-icone/popup__place-close-icone.css);
 @import url(./../styles/blocks/popup/__place-form/popup__place-form.css);
-
+@import url(./../styles/blocks/popup/__delete-form/popup__delete-form.css);
+@import url(./../styles/blocks/popup/__delete-close-icone/popup__delete-close-icone.css);
 
 @import url(./../styles/blocks/popup/__container-form-input/popup__container-form-input.css);
 @import url(./../styles/blocks/popup/__container-form-input/_user-description/popup__container-form-input_user-description.css);
@@ -50,6 +52,7 @@
 @import url(./../styles/blocks/popup/__container-form-submit-button/_active/popup__container-form-submit-button_active.css);
 @import url(./../styles/blocks/popup/__container-form-submit-button/_disabled/popup__container-form-submit-button_disabled.css);
 @import url(./../styles/blocks/popup/__container-form-submit-button/_type_place/popup__container-form-submit-button_type_place.css);
+@import url(./../styles/blocks/popup/__container-form-submit-button/_type_delete/popup__container-form-submit-button_type_delete.css);
 @import url(./../styles/blocks/popup/__container-form-title/popup__container-form-title.css);
 @import url(./../styles/blocks/popup/__container-form/popup__container-form.css);
 
@@ -62,6 +65,8 @@
 @import url(./../styles/blocks/popup/__gallery-image/popup__gallery-image.css);
 
 @import url(./../styles/blocks/popup/__container-form-input/_type/popup__container-form-input_type_error.css);
+
+
 @import url(./../styles/blocks/name-input-error/name-input-error.css);
 
 @import url(./../styles/blocks/name-input-error/name-input-error.css);
