@@ -11,6 +11,7 @@ import {
   popupPlaceOpenButton,
   userForm,
   placeForm,
+  avatarForm
 } from "./../utils/constants.js";
 
 import FormValidator from "./../components/FormValidator.js";
@@ -31,12 +32,15 @@ const descriptionInput = document.querySelector(
 // шаблон-селектор фото-карточки
 const cardSelector = "#placeCard";
 
-//запускаем валидацию форм User и Place
+//запускаем валидацию форм User, Place, Avatar...
 const userFormValidation = new FormValidator(validConfig, userForm);
 userFormValidation.enableValidation();
 
 const placeFormValidation = new FormValidator(validConfig, placeForm);
 placeFormValidation.enableValidation();
+
+const avatarFormValidation = new FormValidator(validConfig, avatarForm);
+avatarFormValidation.enableValidation();
 
 //открываем-закрываем popupUser, получаем текущую информацию о пользователея для вывода на дисплей,
 const openCloseUserPopup = new PopupWithForm(popupUser, {});

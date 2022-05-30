@@ -56,6 +56,7 @@ export const popupAddPlace = document.querySelector(".popup_type_place");
 //формы
 export const userForm = document.querySelector(".popup__user-form");
 export const placeForm = document.querySelector(".popup__place-form");
+export const avatarForm = document.querySelector(".popup__avatar-form");
 
 //элементы popup галлереи
 export const galleryImage = document.querySelector(".popup__gallery-image");

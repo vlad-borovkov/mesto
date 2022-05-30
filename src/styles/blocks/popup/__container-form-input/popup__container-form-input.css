@@ -1,6 +1,7 @@
 .popup__container-form-input {
     display: block;
     margin: 0;
+    margin-top: 48px;
     margin-bottom: 0;
     font-family: inherit;
     max-width: 358px;
