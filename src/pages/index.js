@@ -13,7 +13,6 @@ import {
   placeForm,
 } from "./../utils/constants.js";
 
-
 import FormValidator from "./../components/FormValidator.js";
 import Card from "./../components/Card.js";
 import Section from "./../components/Section.js";
@@ -41,7 +40,10 @@ placeFormValidation.enableValidation();
 
 //открываем-закрываем popupUser, получаем текущую информацию о пользователея для вывода на дисплей,
 const openCloseUserPopup = new PopupWithForm(popupUser, {});
-const userInfo = new UserInfo({ firstname: ".profile__info-name", description: ".profile__info-description" });
+const userInfo = new UserInfo({
+  firstname: ".profile__info-name",
+  description: ".profile__info-description",
+});
 
 popupUserOpenButton.addEventListener("click", () => {
   userFormValidation.resetAllError();
@@ -61,7 +63,7 @@ const popupWithUserInfo = new PopupWithForm(popupUser, {
       firstname: formData.firstname,
       description: formData.description,
     };
-    userInfo.setUserInfo(userValue)
+    userInfo.setUserInfo(userValue);
   },
 });
 popupWithUserInfo.setEventListeners();
