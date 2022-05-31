@@ -4,11 +4,13 @@ import {
   validConfig,
   initialCards,
   cardsContainer,
+  popupAvatarEdit,
   popupUser,
   popupGallery,
   popupAddPlace,
   popupUserOpenButton,
   popupPlaceOpenButton,
+  popupAvatarOpenButton,
   userForm,
   placeForm,
   avatarForm
@@ -41,6 +43,16 @@ placeFormValidation.enableValidation();
 
 const avatarFormValidation = new FormValidator(validConfig, avatarForm);
 avatarFormValidation.enableValidation();
+
+//открываем-закрываем popupAvatar
+const openCloseAvatarPopup = new PopupWithForm(popupAvatarEdit, {});
+popupAvatarOpenButton.addEventListener("click", () => {
+  avatarFormValidation.resetAllError();
+  avatarFormValidation.disabledSubmitButton();
+  openCloseAvatarPopup.open();
+  openCloseAvatarPopup.setEventListeners();
+})
+
 
 //открываем-закрываем popupUser, получаем текущую информацию о пользователея для вывода на дисплей,
 const openCloseUserPopup = new PopupWithForm(popupUser, {});

@@ -47,11 +47,15 @@ export const popupUserOpenButton = document.querySelector(
 export const popupPlaceOpenButton = document.querySelector(
   ".profile__add-button"
 );
+export const popupAvatarOpenButton = document.querySelector(
+  ".profile__avatar"
+)
 
 //окна popup
 export const popupUser = document.querySelector(".popup_type_user");
 export const popupGallery = document.querySelector(".popup_type_gallery");
 export const popupAddPlace = document.querySelector(".popup_type_place");
+export const popupAvatarEdit = document.querySelector(".popup_type_avatar")
 
 //формы
 export const userForm = document.querySelector(".popup__user-form");

@@ -17,11 +17,15 @@
       </header>
       <main>
         <section class="profile">
-          <img
-            class="profile__avatar"
+
+          <div class="profile__avatar">
+            <div class="profile__avatar_overlay"></div>
+            <img
+            class="profile__avatar_picture"
             src="<%=require('./images/Avatar.jpg')%>"
             alt="аватар автора блога"
           />
+          </div>
           <div class="profile__info">
             <div class="profile__info-title">
               <h1 class="profile__info-name">Жак-Ив Кусто</h1>
@@ -135,7 +139,7 @@
             </form>
           </div>
         </div>
-        <div class="popup popup_type_avatar popup_on">
+        <div class="popup popup_type_avatar">
           <button class="popup__avatar-close-icone popup__close-icone" type="button"></button>
           <div class="popup__container-form">
             <form
