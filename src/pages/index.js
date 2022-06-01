@@ -22,6 +22,7 @@ import Section from "./../components/Section.js";
 import PopupWithImage from "./../components/PopupWithImage.js";
 import PopupWithForm from "./../components/PopupWithForm.js";
 import UserInfo from "./../components/UserInfo.js";
+import Api from "./../components/Api.js";
 
 //поля для ввода информации о пользователе
 const nameInput = document.querySelector(
@@ -33,6 +34,27 @@ const descriptionInput = document.querySelector(
 
 // шаблон-селектор фото-карточки
 const cardSelector = "#placeCard";
+
+
+
+
+
+//получение карточек по умолчанию
+const getDefaultCard = new Api(
+  'https://mesto.nomoreparties.co/v1/cohort-42/cards',
+  {
+  method: 'GET',
+  headers: {
+    authorization: '96627758-08f0-44b6-bee2-1f817be1a78f'
+  }
+});
+getDefaultCard.getInitialCards()
+
+
+
+
+
+
 
 //запускаем валидацию форм User, Place, Avatar...
 const userFormValidation = new FormValidator(validConfig, userForm);
@@ -54,12 +76,23 @@ popupAvatarOpenButton.addEventListener("click", () => {
 })
 
 
+
+
+//получение данных о пользователе
+const api = new Api('96627758-08f0-44b6-bee2-1f817be1a78f');
+api.getUserValue()
+.then((userData) => {
+  const userInfo = new UserInfo({
+    firstname: ".profile__info-name",
+    description: ".profile__info-description",
+    avatar: ".profile__avatar_picture"
+  });
+  userInfo.setUserInfo(userData)
+})
+
 //открываем-закрываем popupUser, получаем текущую информацию о пользователея для вывода на дисплей,
 const openCloseUserPopup = new PopupWithForm(popupUser, {});
-const userInfo = new UserInfo({
-  firstname: ".profile__info-name",
-  description: ".profile__info-description",
-});
+
 
 popupUserOpenButton.addEventListener("click", () => {
   userFormValidation.resetAllError();
