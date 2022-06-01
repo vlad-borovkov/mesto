@@ -19,13 +19,16 @@
 @import url(./../styles/blocks/photo-grid/photo-grid.css);
 
 @import url(./../styles/blocks/card/card.css);
+@import url(./../styles/blocks/card/__image/card__image.css);
+@import url(./../styles/blocks/card/__card-delete/card__delete-button.css);
+@import url(./../styles/blocks/card/__card-delete/_visible/card__delete-button_visible.css);
+@import url(./../styles/blocks/card/__card-delete/_hidden/card__delete-button_hidden.css);
+@import url(./../styles/blocks/card/__description/card__description.css);
+@import url(./../styles/blocks/card/__like-section/card__like-section.css);
+@import url(./../styles/blocks/card/__title/card__title.css);
+@import url(./../styles/blocks/card/__like-counter/card__like-counter.css);
 @import url(./../styles/blocks/card/__like-button/card__like-button.css);
 @import url(./../styles/blocks/card/__like-button/_active/card__like-button_active.css);
-@import url(./../styles/blocks/card/__card-delete/card__delete-button.css);
-@import url(./../styles/blocks/card/__title/card__title.css);
-@import url(./../styles/blocks/card/__image/card__image.css);
-@import url(./../styles/blocks/card/__description/card__description.css);
-
 
 @import url(./../styles/blocks/footer/footer.css);
 @import url(./../styles/blocks/footer/__copyright/footer__copyright.css);

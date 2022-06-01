@@ -128,7 +128,7 @@
           <div class="popup__container-form">
             <form
             class="popup__form popup__delete-form"
-            name="confirm-delete">
+            name="delete">
             <h2 class="popup__container-form-title">Вы уверены?</h2>
             <button
                 class="popup__container-form-submit-button popup__container-form-submit-button_type_delete"
@@ -144,16 +144,16 @@
           <div class="popup__container-form">
             <form
             class="popup__form popup__avatar-form"
-            name="confirm-avatar">
+            name="avatar">
             <h2 class="popup__container-form-title">Обновить аватар</h2>
             <input
             id="avatar-input"
             class="popup__container-form-input popup__container-form-input_avatar"
             type="url"
-            name="avatar-change"
+            name="avatar"
             placeholder="Введите URL"
             minlength="2"
-            maxlength="30"
+            maxlength="300"
             required
           />
             <span class="avatar-input-error popup__error"></span>
@@ -179,7 +179,10 @@
         </button>
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"></button>
+          <div class="card__like-section">
+            <button class="card__like-button" type="button"></button>
+            <p class="card__like-counter">4</p>
+          </div>
         </div>
       </div>
     </template>

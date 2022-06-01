@@ -1,9 +1,10 @@
 export default class Card {
-  constructor(data, cardSelector, handlerCardClick) {
+  constructor(data, cardSelector, handlerCardClick, userId) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handlerCardClick = handlerCardClick;
+    this._isCurrentUserCard = userId === data.owner._id;
   }
   //получение шаблона карточки
   _getTemplateCard() {
@@ -17,6 +18,7 @@ export default class Card {
   //создание карточки, присваивание значений, навешивание слушателей
   generateCard() {
     this._elementCard = this._getTemplateCard();
+
     this._deleteButton = this._elementCard.querySelector(
       ".card__delete-button"
     );
@@ -27,6 +29,10 @@ export default class Card {
     this._cardImage.alt = this._name;
     this._cardImage.src = this._link;
     this._cardTitle.textContent = this._name;
+
+    if (!this._isCurrentUserCard) {
+        this._elementCard.querySelector(".card__delete-button").remove()
+      }
 
     this._setEventListeners();
 
@@ -49,5 +55,4 @@ export default class Card {
     this._elementCard.remove();
     this._elementCard = null;
   }
-
 }
