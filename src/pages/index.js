@@ -101,8 +101,19 @@ api.getUserValue()
         popupConfirm.setHandlerSubmit((evt) => {
           evt.preventDefault();
           popupConfirm.isLoading(true);
-          //продолжить на удалении карточки
+          api.deleteCard(cardId)
+            .then(() => {
+              cardElement.remove();
+              popupConfirm.close();
+            })
+            .catch((err) => {
+              console.log(`ошибка ${err}`)
+          })
+          .finally(() => {
+            popupConfirm.isLoading(false);
+        });
         })
+        popupConfirm.open();
       },
       "1a98c019797abaeb0c1c917e"
     );
@@ -119,19 +130,31 @@ const cardList = new Section({
     cardsContainer
   );
 
+//рендерринг данных пользователя в popupUser гибридной связью классов
+ const popupWithUserInfo = new PopupWithForm(popupUser, {
+  handlerSubmitForm: (formData) => {
+    const userValue = {
+      firstname: formData.firstname,
+      description: formData.description,
+    }
+    api.changeUserInfo(userValue)
+      .then((userValue) => {
+      userInfo.setUserInfoHandler(userValue);
+      popupWithUserInfo.close();
+      })
+      .catch((err) => {
+        console.log(`ошибка ${err}`)
+      })
+      .finally(() => {
+        popupWithUserInfo.isLoading(false); //дописать метод
+      });
+  }
+})
 
 
 
-//поля для ввода информации о пользователе
-const nameInput = document.querySelector(
-  ".popup__container-form-input_user-name"
-);
-const descriptionInput = document.querySelector(
-  ".popup__container-form-input_user-description"
-);
 
-// шаблон-селектор фото-карточки
-const cardSelector = "#placeCard";
+
 
 
 
@@ -174,25 +197,10 @@ const popupWithAvatar = new PopupWithForm(popupAvatarEdit, {
     });
   },
 });
-popupWithAvatar.setEventListeners();
 
-//рендерринг данных пользователя в popupUser гибридной связью классов
-const popupWithUserInfo = new PopupWithForm(popupUser, {
-  handlerSubmitForm: (formData) => {
-    const userValue = {
-      firstname: formData.firstname,
-      description: formData.description,
-    };
-    api.changeUserInfo(userValue).then((userValue) => {
-      const userInfo = new UserInfo({
-        firstname: ".profile__info-name",
-        description: ".profile__info-description",
-      });
-      userInfo.setUserInfoHandler(userValue);
-    });
-  },
-});
-popupWithUserInfo.setEventListeners();
+
+
+
 
 //открываем-закрываем окно добавления фото-карточки
 const openClosePlacePopup = new PopupWithForm(popupAddPlace, {});
@@ -227,10 +235,24 @@ const popupWithFormPlace = new PopupWithForm(popupAddPlace, {
     });
   },
 });
-popupWithFormPlace.setEventListeners();
+
+
+//поля для ввода информации о пользователе
+const nameInput = document.querySelector(
+  ".popup__container-form-input_user-name"
+);
+const descriptionInput = document.querySelector(
+  ".popup__container-form-input_user-description"
+);
+
+// шаблон-селектор фото-карточки
+const cardSelector = "#placeCard";
 
 
 //все слушатели
+popupWithAvatar.setEventListeners();
+popupWithFormPlace.setEventListeners();
+popupWithUserInfo.setEventListeners();
 openCloseGalleryPopup.setEventListeners();
 
 // вывод авто-карточек в popupGallery при handleClick

@@ -31,30 +31,14 @@ makeRequest(url, method = "GET", body) {
     ])
   }
 
-  changeUserInfo(userData) {
-    this._userName = userData.firstname;
-    this._userDescription = userData.description;
+  changeUserInfo(userValue) {
+    this._userName = userValue.firstname;
+    this._userDescription = userValue.description;
 
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: this._userName,
-        about: this._userDescription,
-      }),
-    })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Что-то пошло не так: ${res.status}`)
-      )
-
-      .catch((err) => {
-        console.log(err);
-      });
+    const requestUrl = "/users/me";
+    const userData = {name: this._userName, about: this._userDescription}
+    //передать объект на сервер
+    return this.makeRequest(requestUrl, "PATCH", userData)
   }
 
   changeAvatar(avatarUrl) {
@@ -116,5 +100,11 @@ makeRequest(url, method = "GET", body) {
     const requestUrl = `/cards/${cardId}/likes`;
     return this.makeRequest(requestUrl, "PUT")
   }
+
+  deleteCard(cardId) {
+    const requestUrl = `/cards/${cardId}`;
+    return this.makeRequest(requestUrl, "DELETE")
+  }
+
 
 }
