@@ -8,6 +8,7 @@ export default class Popup {
     this._handleCloseOnEsc = this._handleCloseOnEsc.bind(this);
     this._popupOverlay = this._popupSelector;
   }
+  
   setEventListeners() {
     this._popupCloseIcone.addEventListener("click", () => this.close());
     this._popupOverlay.addEventListener("click", this._closeOnOverlay);

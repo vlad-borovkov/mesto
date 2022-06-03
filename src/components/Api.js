@@ -1,25 +1,34 @@
 export default class Api {
-  constructor(token) {
-    (this._baseUrl = "https://nomoreparties.co/v1/cohort-42"),
-      (this._token = token);
+  constructor({domain, token}) {
+    this._domain = domain;
+    this._headers = {authorization: token, "Content-Type": "application/json",}
   }
 
-  getUserValue() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
-      headers: {
-        authorization: this._token,
-      },
-    })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Что-то пошло не так: ${res.status}`)
-      )
+  _checkResponse(res) {
+    if (res.ok) {
+        return res.json()
+    }
+    return Promise.reject(`${res.status} - ${res.statusText}`)
+}
 
-      .catch((err) => {
-        console.log(err);
-      });
+makeRequest(url, method = "GET", body) {
+  const requestUrl = this._domain + url;
+  return fetch(
+    requestUrl,
+    {
+      method: method,
+      headers: this._headers,
+      body: JSON.stringify(body)
+    }).then(this._checkResponse)
+}
+
+  getUserValue() {
+    const infoUsersDefault="/users/me";
+    const cardsFromServer="/cards";
+    return Promise.all([
+      this.makeRequest(infoUsersDefault),
+      this.makeRequest(cardsFromServer)
+    ])
   }
 
   changeUserInfo(userData) {
@@ -71,23 +80,6 @@ export default class Api {
       });
   }
 
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
-      headers: {
-        authorization: this._token,
-      },
-    })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Что-то пошло не так: ${res.status}`)
-      )
-
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   handlerAddCard(cardsData) {
     this._cardName = cardsData.name;
@@ -114,4 +106,15 @@ export default class Api {
         console.log(err);
       });
   }
+
+  deleteLikeOnCard(cardId) {
+    const requestUrl = `/cards/${cardId}/likes`;
+    return this.makeRequest(requestUrl, "DELETE")
+  }
+
+  addLikeOnCard(cardId) {
+    const requestUrl = `/cards/${cardId}/likes`;
+    return this.makeRequest(requestUrl, "PUT")
+  }
+
 }

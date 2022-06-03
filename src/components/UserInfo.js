@@ -12,10 +12,17 @@ export default class UserInfo {
 
     return userValueDefault;
   }
-
-  setUserAvatar(userValueAvatar) {
-    this._userAvatarInterface.src = userValueAvatar.avatar;
+  setUserAvatar(userValueDefault) {
+    this._userAvatarInterface.src = userValueDefault.avatar;
   }
+
+  setUserId(userValueDefault) {
+    this._userId = userValueDefault._id
+}
+
+  getUserId() {
+    return this._userId
+}
 
   setUserInfo(userValueDefault) {
     this._userNameInterface.textContent = userValueDefault.name;
