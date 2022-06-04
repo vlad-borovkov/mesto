@@ -1,17 +1,17 @@
-.profile__avatar_picture {
+.profile__avatar-picture {
   border-radius: 100%;
   height: 100%;
   width: auto;
 }
 
 @media screen and (max-width: 915px) and (min-width: 661px){
-  .profile__avatar_picture {
+  .profile__avatar-picture {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 660px) and (min-width: 320px)   {
-  .profile__avatar_picture {
+  .profile__avatar-picture {
     width: 120px;
     margin-bottom: 26px;
   }

@@ -46,7 +46,7 @@ const popupConfirm = new PopupWithConfirm(popupConfirmDelete);
 const userInfo = new UserInfo({
   firstname: ".profile__info-name",
   description: ".profile__info-description",
-  avatar: ".profile__avatar_picture",
+  avatar: ".profile__avatar-picture",
 });
 api
   .getUserValue()
@@ -193,7 +193,7 @@ const popupWithAvatar = new PopupWithForm(popupAvatarEdit, {
       .changeAvatar(avatarUrl)
       .then((replacedAvatar) => {
         const changeAvatar = new UserInfo({
-          avatar: ".profile__avatar_picture",
+          avatar: ".profile__avatar-picture",
         });
         changeAvatar.setUserAvatar(replacedAvatar);
       })
