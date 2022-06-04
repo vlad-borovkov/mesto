@@ -8,7 +8,7 @@ export default class Card {
     this._handlerCardClick = handlerCardClick;
     this._isCurrentUserCard = userId === data.owner._id;
     this._handlerLike = handlerLike;
-    this._handlerDelete = handlerDelete;
+    this._handlerDeleteButton = handlerDelete;
   }
   //получение шаблона карточки
   _getTemplateCard() {
@@ -75,9 +75,11 @@ export default class Card {
     });
     // удаляю карточку
     if (this._isCurrentUserCard) {
-      this._cardSelector.querySelector(".card__delete-button").addEventListener("click", (event) => this._handlerDelete(event));
-    }
+      this._deleteButton.addEventListener("click", (event) => {
+        this._handlerDeleteButton(event.target);
 
+      });
+    }
   }
   _switchLike() {
     this._likeButton.classList.toggle("card__like-button_active");

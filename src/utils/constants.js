@@ -1,31 +1,3 @@
-//массив фото-карточек
-export const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
 // конфиг валидации
 export const validConfig = {
   formSelector: ".popup__form",
@@ -47,16 +19,39 @@ export const popupUserOpenButton = document.querySelector(
 export const popupPlaceOpenButton = document.querySelector(
   ".profile__add-button"
 );
-export const popupAvatarOpenButton = document.querySelector(
-  ".profile__avatar"
-)
+export const popupAvatarOpenButton = document.querySelector(".profile__avatar");
+
+//поля для ввода информации о пользователе
+export const nameInput = document.querySelector(
+  ".popup__container-form-input_user-name"
+);
+export const descriptionInput = document.querySelector(
+  ".popup__container-form-input_user-description"
+);
+
+//кнопки подтверждения форм
+export const avatarSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_type_avatar"
+);
+export const userSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_active"
+);
+export const placeSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_type_place"
+);
+export const deleteSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_type_delete"
+);
+
+// шаблон-селектор фото-карточки
+export const cardSelector = "#placeCard";
 
 //окна popup
 export const popupUser = document.querySelector(".popup_type_user");
 export const popupGallery = document.querySelector(".popup_type_gallery");
 export const popupAddPlace = document.querySelector(".popup_type_place");
-export const popupAvatarEdit = document.querySelector(".popup_type_avatar")
-export const popupConfirmDelete = document.querySelector(".popup_type_delete")
+export const popupAvatarEdit = document.querySelector(".popup_type_avatar");
+export const popupConfirmDelete = document.querySelector(".popup_type_delete");
 
 //формы
 export const userForm = document.querySelector(".popup__user-form");
@@ -74,16 +69,3 @@ export const nameOutput = document.querySelector(".profile__info-name");
 export const descriptionOutput = document.querySelector(
   ".profile__info-description"
 );
-
-// //поля для ввода информации для карточки на всякий случай
-// const placeInput = document.querySelector(
-//   ".popup__container-form-input_location"
-// );
-// const imageInput = document.querySelector(".popup__container-form-input_link");
-
-// //кнопки открытия-закрытия отдельного popup на всякий случай
-// const popupAddPlaceCloseButton = document.querySelector(
-//   ".popup__place-close-icone"
-// );
-// const popupUserCloseButton = document.querySelector(".popup__user-close-icone");
-// const popupGalleryClose = document.querySelector(".popup__gallery-close-icone");
