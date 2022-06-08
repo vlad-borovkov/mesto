@@ -17,7 +17,7 @@ export default class PopupWithConfirm extends Popup {
       this._submitButton.textContent = "Готово";
       this._submitButton.disabled = false;
     }
-  }
+  } 
 
   setEventListeners() {
     this._formElement.addEventListener("submit", (evt) => {

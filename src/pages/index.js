@@ -80,6 +80,7 @@ const returnClickCard = (data) => {
           .then((data) => {
             card.setLike();
             card.likesCountUpdate(data.likes);
+            console.log(data)
           })
           .catch((err) => {
             console.log(`ошибка ${err}`);
@@ -95,6 +96,7 @@ const returnClickCard = (data) => {
             console.log(`ошибка ${err}`);
           });
       }
+      card.setLike();
     },
     (handlerDelete) => {
       deleteSubmitButton.textContent = "Да";
@@ -118,7 +120,7 @@ const returnClickCard = (data) => {
       });
       popupConfirm.open();
     },
-    "1a98c019797abaeb0c1c917e"
+    userInfo.getUserId()
   );
   const cardElement = card.generateCard();
   return cardElement;
@@ -128,7 +130,7 @@ const cardList = new Section(
   {
     renderer: (item) => {
       const cardElement = returnClickCard(item);
-      cardList.addItem(cardElement);
+      cardList.addItemAppend(cardElement)
     },
   },
   cardsContainer
@@ -169,7 +171,7 @@ const popupWithFormPlace = new PopupWithForm(popupAddPlace, {
       .handlerAddCard(cardData)
       .then((cardValue) => {
         const cardElement = returnClickCard(cardValue);
-        cardList.addItem(cardElement);
+        cardList.addItemPrepend(cardElement);
       })
       .catch((err) => {
         console.log(`ошибка ${err}`);

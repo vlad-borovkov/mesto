@@ -4,6 +4,7 @@ export default class Card {
     this._link = data.link;
     this._likes = data.likes;
     this._cardId = data._id;
+    this._userId = userId;
     this._cardSelector = cardSelector;
     this._handlerCardClick = handlerCardClick;
     this._isCurrentUserCard = userId === data.owner._id;
@@ -38,6 +39,9 @@ export default class Card {
   likesCountUpdate(data) {
     this._countLike.textContent = data.length;
 }
+  _findMyLikes() {
+    return this._likes.some((item) => item._id === this._userId)
+  }
 
   generateCard() {
     this._elementCard = this._getTemplateCard();
@@ -60,7 +64,7 @@ export default class Card {
     this._countLike.textContent = this._likes.length;
 
     this._setEventListeners();
-
+    this._toggleLikeState();
     return this._elementCard;
   }
 
@@ -85,4 +89,12 @@ export default class Card {
     this._likeButton.classList.toggle("card__like-button_active");
   }
 
+  _toggleLikeState() {
+    if (this._findMyLikes()) {
+      this.setLike()
+    }
+    else {
+      this.unsetLike()
+    }
+  }
 }
