@@ -29,20 +29,6 @@ export const descriptionInput = document.querySelector(
   ".popup__container-form-input_user-description"
 );
 
-//кнопки подтверждения форм
-export const avatarSubmitButton = document.querySelector(
-  ".popup__container-form-submit-button_type_avatar"
-);
-export const userSubmitButton = document.querySelector(
-  ".popup__container-form-submit-button_active"
-);
-export const placeSubmitButton = document.querySelector(
-  ".popup__container-form-submit-button_type_place"
-);
-export const deleteSubmitButton = document.querySelector(
-  ".popup__container-form-submit-button_type_delete"
-);
-
 // шаблон-селектор фото-карточки
 export const cardSelector = "#placeCard";
 
@@ -58,14 +44,22 @@ export const userForm = document.querySelector(".popup__user-form");
 export const placeForm = document.querySelector(".popup__place-form");
 export const avatarForm = document.querySelector(".popup__avatar-form");
 
-//элементы popup галлереи
-export const galleryImage = document.querySelector(".popup__gallery-image");
-export const galleryDescription = document.querySelector(
-  ".popup__gallery-description"
-);
-
 //вывод информации о пользователе
 export const nameOutput = document.querySelector(".profile__info-name");
 export const descriptionOutput = document.querySelector(
   ".profile__info-description"
+);
+
+//кнопки подтверждения форм
+export const avatarSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_type_avatar"
+);
+export const userSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_active"
+);
+export const placeSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_type_place"
+);
+export const deleteSubmitButton = document.querySelector(
+  ".popup__container-form-submit-button_type_delete"
 );

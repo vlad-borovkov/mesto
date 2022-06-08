@@ -25,9 +25,16 @@ export default class UserInfo {
 }
 
   setUserInfo(userValueDefault) {
-    this._userNameInterface.textContent = userValueDefault.name;
-    this._userDescriptionInterface.textContent = userValueDefault.about;
-    this._userAvatarInterface.src = userValueDefault.avatar;
+    if (userValueDefault.name) {
+      this._userNameInterface.textContent = userValueDefault.name;
+    }
+    if (userValueDefault.about) {
+      this._userDescriptionInterface.textContent = userValueDefault.about;
+    }
+    if (userValueDefault.avatar) {
+      this._userAvatarInterface.src = userValueDefault.avatar;
+    }
+
   }
   setUserInfoHandler(userHandlerValue) {
     this._userNameInterface.textContent = userHandlerValue.name;

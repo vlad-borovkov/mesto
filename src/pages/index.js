@@ -19,10 +19,6 @@ import {
   popupUserOpenButton,
   popupPlaceOpenButton,
   popupAvatarOpenButton,
-  avatarSubmitButton,
-  userSubmitButton,
-  placeSubmitButton,
-  deleteSubmitButton,
   userForm,
   placeForm,
   avatarForm,
@@ -38,7 +34,7 @@ const api = new Api({
 });
 
 //вызываем popups
-const openCloseGalleryPopup = new PopupWithImage(popupGallery);
+const popupZoomImage = new PopupWithImage(popupGallery);
 const popupConfirm = new PopupWithConfirm(popupConfirmDelete);
 
 //запрос информации пользователя, вставка в разметку
@@ -61,7 +57,7 @@ api
     console.log(err);
   });
 //функция создания карточки с колбэками API: лайк, удаление, открытие галлереи
-const returnClickCard = (data) => {
+const createCard = (data) => {
   const card = new Card(
     data,
     cardSelector,
@@ -70,7 +66,7 @@ const returnClickCard = (data) => {
         name: handlerCardClick.alt,
         link: handlerCardClick.src,
       };
-      openCloseGalleryPopup.open(cardValue);
+      popupZoomImage.open(cardValue);
     },
     (handlerLike) => {
       const cardId = card.getCardId();
@@ -80,7 +76,7 @@ const returnClickCard = (data) => {
           .then((data) => {
             card.setLike();
             card.likesCountUpdate(data.likes);
-            console.log(data)
+            console.log(data);
           })
           .catch((err) => {
             console.log(`ошибка ${err}`);
@@ -99,7 +95,6 @@ const returnClickCard = (data) => {
       card.setLike();
     },
     (handlerDelete) => {
-      deleteSubmitButton.textContent = "Да";
       const cardId = card.getCardId();
       const cardElement = handlerDelete.closest(".card");
       popupConfirm.setHandlerSubmit((evt) => {
@@ -109,13 +104,13 @@ const returnClickCard = (data) => {
           .deleteCard(cardId)
           .then(() => {
             cardElement.remove();
+            popupConfirm.close();
           })
           .catch((err) => {
             console.log(`ошибка ${err}`);
           })
           .finally(() => {
             popupConfirm.isLoadingConfirm(false);
-            popupConfirm.close();
           });
       });
       popupConfirm.open();
@@ -129,8 +124,8 @@ const returnClickCard = (data) => {
 const cardList = new Section(
   {
     renderer: (item) => {
-      const cardElement = returnClickCard(item);
-      cardList.addItemAppend(cardElement)
+      const cardElement = createCard(item);
+      cardList.addItemAppend(cardElement);
     },
   },
   cardsContainer
@@ -170,18 +165,23 @@ const popupWithFormPlace = new PopupWithForm(popupAddPlace, {
     api
       .handlerAddCard(cardData)
       .then((cardValue) => {
-        const cardElement = returnClickCard(cardValue);
+        const cardElement = createCard(cardValue);
         cardList.addItemPrepend(cardElement);
+        popupWithFormPlace.close();
       })
       .catch((err) => {
         console.log(`ошибка ${err}`);
       })
       .finally(() => {
         popupWithFormPlace.isLoading(false);
-        popupWithFormPlace.close();
       });
     cardsContainer;
   },
+});
+
+//конфиг для вставки аватарки
+const changeAvatar = new UserInfo({
+  avatar: ".profile__avatar-picture",
 });
 
 //смена popupAvatar, отправка аватарки на сервер из формы
@@ -194,24 +194,20 @@ const popupWithAvatar = new PopupWithForm(popupAvatarEdit, {
     api
       .changeAvatar(avatarUrl)
       .then((replacedAvatar) => {
-        const changeAvatar = new UserInfo({
-          avatar: ".profile__avatar-picture",
-        });
         changeAvatar.setUserAvatar(replacedAvatar);
+        popupWithAvatar.close();
       })
       .catch((err) => {
         console.log(`ошибка ${err.message}`);
       })
       .finally(() => {
         popupWithAvatar.isLoading(false);
-        popupWithAvatar.close();
       });
   },
 });
 
 //открываем-закрываем popupAvatar
 popupAvatarOpenButton.addEventListener("click", () => {
-  avatarSubmitButton.textContent = "Сохранить";
   avatarFormValidation.resetAllError();
   avatarFormValidation.disabledSubmitButton();
   popupWithAvatar.open();
@@ -219,7 +215,6 @@ popupAvatarOpenButton.addEventListener("click", () => {
 
 //открываем-закрываем popupUser, получаем текущую информацию о пользователея для вывода на дисплей
 popupUserOpenButton.addEventListener("click", () => {
-  userSubmitButton.textContent = "Сохранить";
   const currentUserInfo = userInfo.getUserInfo();
 
   nameInput.value = currentUserInfo.firstname;
@@ -233,7 +228,6 @@ popupUserOpenButton.addEventListener("click", () => {
 //открываем-закрываем окно добавления фото-карточки
 const openClosePlacePopup = new PopupWithForm(popupAddPlace, {});
 popupPlaceOpenButton.addEventListener("click", () => {
-  placeSubmitButton.textContent = "Создать";
   placeFormValidation.resetAllError();
   placeFormValidation.disabledSubmitButton();
   openClosePlacePopup.open();
@@ -254,4 +248,4 @@ popupConfirm.setEventListeners();
 popupWithAvatar.setEventListeners();
 popupWithFormPlace.setEventListeners();
 popupWithUserInfo.setEventListeners();
-openCloseGalleryPopup.setEventListeners();
+popupZoomImage.setEventListeners();

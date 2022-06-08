@@ -1,13 +1,17 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, {handlerSubmitForm}) {
-    super(popupSelector);
-    this._formElement = this._popupSelector.querySelector(".popup__form");
+  constructor(popupElement, {handlerSubmitForm}) {
+    super(popupElement);
+    this._formElement = this._popupElement.querySelector(".popup__form");
     this._handlerSubmitForm = handlerSubmitForm;
-    this._inputList = this._popupSelector.querySelectorAll(".popup__container-form-input");
-    this._submitButton = this._popupSelector.querySelector(".popup__container-form-submit-button")
+    this._inputList = this._popupElement.querySelectorAll(".popup__container-form-input");
+    this._submitButton = this._popupElement.querySelector(".popup__container-form-submit-button")
+
+
   }
+
+
   _getInputValues() {
 
     this._formValues = {};
@@ -25,14 +29,19 @@ export default class PopupWithForm extends Popup {
     })
   }
 
+
   isLoading(isLoading) {
     if (isLoading === true) {
         this._submitButton.textContent = 'Сохранение...';
         this._submitButton.disabled = true;
     } else {
-        this._submitButton.textContent = 'Готово';
+        this._submitButton.textContent = 'Создать';
         this._submitButton.disabled = false;
     }
+}
+
+open(){
+  super.open()
 }
 
   close(){
@@ -40,5 +49,6 @@ export default class PopupWithForm extends Popup {
     this._formElement.reset()
     //очистка полей формы
   }
+
 }
 
